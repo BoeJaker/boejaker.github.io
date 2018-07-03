@@ -1,12 +1,16 @@
 <!DOCTYPE html>
+
+//Imports
 <link rel="stylesheet/scss" type="text/css" href="style.scss">
 <script src="//cdnjs.cloudflare.com/ajax/libs/sass.js/0.6.3/sass.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <html>
+  
 <nav>
   <div class="reference"></div>
   
+  <!–– Menu elements ––>
   <ol>
     <li class="menu-item"><a href="#home">Home</a></li>
     
@@ -33,7 +37,8 @@
     <li class="menu-item"><a href="#contact">Contact</a></li>
   </ol>
 </nav>
-
+  
+<!––Pages ––>
 <content>
 
   <div id="home">
@@ -65,7 +70,7 @@
 </content>
 </html>
 
-
+<!––Menu script––>
 <script type="text/javascript">
 function viewport(){
   var st = $(window).scrollTop();
@@ -124,7 +129,7 @@ $(window).resize(function(){
 $(window).scroll(function(){
   viewport();
 });
-
+// Click Handler 
 $(document).on('click', 'a[href^="#"]', function (event) {
     event.preventDefault();
 
