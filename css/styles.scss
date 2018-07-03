@@ -213,7 +213,7 @@ content{
       align-items: center;
       
       > div{
-        height:20vh;
+        height:20;
         padding:2vh 10%;
       }
         > footer{
@@ -278,7 +278,3 @@ content{
       background: $palm-springs-splash;
     }
 }
-//hacked overwrite-height modification
- .page{
-    height:100vh;
-  }
