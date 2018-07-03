@@ -1,19 +1,10 @@
-<!DOCTYPE html>
 
-<!-- Imports -->
-<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/sass.js/0.6.3/sass.min.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Catamaran:400,600,800" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="css/styles.css">
-
-<html>
-
-<!-- Menu elements -->
 <nav>
-   <div class="reference"></div>
+  <div class="reference"></div>
   
   <ol>
-    <li class="menu-item"><a href="#home">Home</a></li>
+    
+    <li class="menu-item"><a href="#home">Welcome</a></li>
     
     <li class="menu-item"><a href="#about">About</a></li>
     
@@ -38,69 +29,38 @@
     <li class="menu-item"><a href="#contact">Contact</a></li>
   </ol>
 </nav>
-  
-<!-- Pages -->
+
 <content>
 
-  <div id="home">
-    <h1>Home</h1>
+  <div id="home" class="page" >
+    <h1>Welcome</h1>
   </div>
 
-  <div id="about">
+  <div id="about" class="page">
     <h1>About</h1>
+    <div class="github-card" data-user="boejaker" style="position:fixed; left:40px"></div>
+
   </div>
 
-  <div id="widgets">
+  <div id="widgets" class="page">
     <h1>Widgets</h1>
-      
-    <div id="bigwidgets"><h2>Big Widgets</h2></div>
-    <div id="biggerwidgets"><h2>Bigger Widgets</h2></div>
-    <div id="hugewidgets"><h2>Huge Widgets</h2></div>
+    <div id="widgetscontent"></div>
+    <div id="bigwidgets" class="sub-page"><h2>Big Widgets</h2></div>
+    <div id="biggerwidgets" class="sub-page"><h2>Bigger Widgets</h2></div>
+    <div id="hugewidgets" class="sub-page"><h2>Huge Widgets</h2></div>
   </div>
-  
-  <div id="kabobs">
+   
+  <div id="kabobs" class="page">
     <h1>Kabobs</h1>
-    
-    <div id="shishkabobs"><h2>Shishkabobs</h2></div>
-    <div id="bbqkabobs"><h2>BBQ kabobs</h2></div>
-    <div id="summerkabobs"><h2>Summer kabobs</h2></div>
+    <div id="kabobscontent"></div>
+    <div id="shishkabobs" class="sub-page"><h2>Shishkabobs</h2></div>
+    <div id="bbqkabobs" class="sub-page"><h2>BBQ kabobs</h2></div>
+    <div id="summerkabobs" class="sub-page"><h2>Summer kabobs</h2></div>
   </div>
     
-  <div id="contact"><h1>Contact</h1></div>
+  <div id="contact" class="page">
+    <h1>Contact</h1>
+    <footer>Copyright © 2018 Clockwork Marketing Inc.</footer>
+  </div>
   
 </content>
-<!-- Menu script -->
-<script>
-function viewport(){
-  var st = $(window).scrollTop();
-  var wh = $(window).height();
-  var top = st;
-  var bottom = st + wh;
-  
-  var dif = $("nav").height() / $(document).height();
-
-  $(".reference").css({
-    'height': (wh * dif),
-    'top': (st * dif)
-  });
-}
-
-viewport();
-
-$(window).resize(function(){
-  viewport();
-});
-
-$(window).scroll(function(){
-  viewport();
-});
-
-$(document).on('click', 'a[href^="#"]', function (event) {
-    event.preventDefault();
-
-    $('html, body').animate({
-        scrollTop: $($.attr(this, 'href')).offset().top
-    }, 500);
-});
-</script>
-</html>
