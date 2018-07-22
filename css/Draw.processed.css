@@ -1,0 +1,89 @@
+.square {
+  background: transparent;
+  display: block;
+  right: 1vw;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  margin-top: 4vw;
+  width: 80vw;
+  height: 70vh;
+  position: relative;
+  visibility: hidden;
+}
+
+.square .l1,
+.square .l2,
+.square .l3,
+.square .l4 {
+  position: absolute;
+  background: transparent;
+  width: 0px;
+  height: 0px;
+  /*give each border a background color of black in css so that you don't need to animate it*/
+  background-color: rgba(240, 240, 240, 0.4);
+}
+
+.square .l1 {
+  left: 0;
+  top: 0;
+  width: 4px;
+}
+
+.square .l2 {
+  top: 0;
+  left: 0;
+  height: 4px;
+}
+
+.square .l3 {
+  right: 0;
+  bottom: 0;
+  width: 4px;
+}
+
+.square .l4 {
+  bottom: 0;
+  right: 0;
+  height: 4px;
+}
+
+.hr1 {
+  height: 0.8vw;
+  background: rgba(244, 244, 244, 0.3);
+  border: none;
+}
+
+.hr2 {
+  background: rgba(244, 244, 244, 0.7);
+  height: 0.4vw;
+  width: 20vw;
+  border: none;
+}
+
+.hr3 {
+  background: rgba(244, 244, 244, 0.3);
+  height: 0.2vw;
+  width: 60vw;
+  border: none;
+}
+
+.trans--growLeft {
+  -webkit-transition: width 1s ease-out;
+  /* For Safari 3.1 to 6.0 */
+  transition: width 1s ease-out;
+  width: 0%;
+  margin-left: 0;
+}
+
+.trans--growRight {
+  -webkit-transition: width 1s ease-out;
+  /* For Safari 3.1 to 6.0 */
+  transition: width 1s ease-out;
+  width: 0%;
+  float: right;
+  margin-right: 0;
+}
+
+.grow {
+  width: 100%;
+}
