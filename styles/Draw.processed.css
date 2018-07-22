@@ -47,7 +47,6 @@
   height: 4px;
 }
 
-<<<<<<< HEAD
 .hr1 {
   height: 0.8vw;
   background: rgba(244, 244, 244, 0.3);
@@ -87,35 +86,4 @@
 
 .grow {
   width: 100%;
-=======
-.trans--grow {
-  -webkit-transition: width 1s ease-out;
-  /* For Safari 3.1 to 6.0 */
-  transition: width 1s ease-out;
-  width: 0%;
-}
-
-.grow {
-  width: 100%;
-}
-
-.hr1 {
-  width: 40vw;
-  height: 0.8vw;
-  background: rgba(244, 244, 244, 0.3);
-  border-color: rgba(244, 244, 244, 0);
-  margin-left: 0;
-}
-
-.hr2 {
-  width: 20vw;
-  margin: 0 auto;
-  border-color: rgba(244, 244, 244, 0.7);
-}
-
-.hr3 {
-  width: 60vw;
-  margin: 10px auto;
-  border: 2px solid rgba(244, 244, 244, 0.4);
->>>>>>> 74cf756e42dae67845461c00169dcd2f48b12629
 }
