@@ -19,13 +19,17 @@ tl3.timeScale(4); //play faster
 tl4.timeScale(4); //play faster
 
 $('.square').css('height', $('.table').outerHeight());
+<<<<<<< HEAD
 $('page').css('min-height', $('.square').outerHeight()+100);
+=======
+>>>>>>> 74cf756e42dae67845461c00169dcd2f48b12629
 
 $( window ).resize(function() {$(".l1").css("height", $(".table").outerHeight());});
 $( window ).resize(function() {$('.l2').css('width', $('.table').outerWidth());});
 $( window ).resize(function() {$('.l3').css('height', $('.table').outerHeight());});
 $( window ).resize(function() {$('.l4').css('width', $('.table').outerWidth());});
 $( window ).resize(function() {$('.square').css('height', $('.table').outerHeight());}); 
+<<<<<<< HEAD
 $( window ).resize(function() {$('page').css('min-height', $('.square').outerHeight()+100);}); 
 
 jQuery(document).ready(function($){
@@ -34,4 +38,9 @@ jQuery(document).ready(function($){
 				$('.trans--growRight').addClass('grow');
     }, 275);
 });
+=======
+$( window ).resize(function() {$('page').css('min-height', $('.table').outerHeight()+100);}); 
+
+$('.trans--grow').addClass('grow');
+>>>>>>> 74cf756e42dae67845461c00169dcd2f48b12629
 

@@ -33,6 +33,10 @@ content{
       // overflow: auto;
       height:100vh;
       width:100%;
+<<<<<<< HEAD
+=======
+      min-height:500px;
+>>>>>>> 74cf756e42dae67845461c00169dcd2f48b12629
       display: flex;
       flex-direction:column;
       // justify-content: center;
@@ -142,6 +146,7 @@ content{
 	animation: fadeInShadow normal ease-in 3s;
 	animation-fill-mode: forwards;	
 }
+<<<<<<< HEAD
 .column{
 		float:left;
 	}
@@ -156,3 +161,7 @@ content{
 	}
 }
 // 20p
+=======
+
+
+>>>>>>> 74cf756e42dae67845461c00169dcd2f48b12629
