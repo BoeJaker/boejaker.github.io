@@ -1,0 +1,158 @@
+$jacksons-purple: #70407A;
+$eye-of-newt: #b33939;
+$chilean-fire: #cd6133;
+$alameda-ochre: #cc8e35;
+$palm-springs-splash: #218c74;
+$cyan: #60daaa;
+
+$transition: .5s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+
+.preload * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  font-family: 'Catamaran', sans-serif;
+}
+body{
+    margin:0;
+    padding:0;
+}
+
+content{
+  color:rgba(255,255,255,0.9);
+  text-align:center;
+    
+    page{
+      // overflow: auto;
+      height:100vh;
+      width:100%;
+      display: flex;
+      flex-direction:column;
+      // justify-content: center;
+      align-items: center;
+      padding: -20px;
+      
+			
+      subdiv{
+        // overflow: auto;
+        width:98vw;
+        display: flex;
+        flex-direction:column;
+        padding:2vh 10%;
+      }
+        footer{
+        color: rgba(249,249,249,0.4);
+        position: fixed;
+        bottom: 10px;
+      }
+      
+       .table{
+        // width:80vw; 
+        // height:70vh; 
+				font-family: 'Catamaran', sans-serif;
+				font-size: 1.2em;
+				-webkit-font-smoothing: antialiased;
+        background-color: rgba(200, 200, 200, 0.1);
+        z-index: 300;
+					
+					b{
+						text-transform:uppercase;
+						letter-spacing:0.4vw;
+						}
+					a{
+						text-decoration:none;
+					}
+					a:hover{
+						background: rgba(200,200,200,0.4)
+					}
+      }
+    }
+
+
+    h1{
+      font-size:4vw;
+      text-transform:uppercase;
+      font-weight:800;
+      letter-spacing:1vw;
+			line-height:4vw;
+			margin: 1vw 0 1vw;
+
+    }
+    h2{
+      font-size:2vw;
+      text-transform:uppercase;
+      font-weight:500;
+      letter-spacing:0.4vw;
+      line-height:2vw;
+			margin: 1vw 0 1vw;
+    }
+    #welcome{
+      background:$jacksons-purple;
+    }
+    
+    #about{
+      background: $eye-of-newt;
+    }
+    
+    #layouts{
+      background: $chilean-fire;
+      
+      #bigwidgets{
+        background:darken($chilean-fire, 5%)
+      }
+      #biggerwidgets{
+        background:darken($chilean-fire, 10%)
+      }
+      #hugewidgets{
+        background:darken($chilean-fire, 15%)
+      }
+    }
+    
+    
+    #elements{
+      background: $alameda-ochre;
+      
+      #shishkabobs{
+        background:darken($alameda-ochre, 5%)
+      }
+      #bbqkabobs{
+        background:darken($alameda-ochre, 10%)
+      }
+      #summerkabobs{
+        background:darken($alameda-ochre, 15%)
+      }
+    }
+    
+    
+    #contact{
+      background: $palm-springs-splash;
+    }
+}
+
+@keyframes fadeInShadow { from { box-shadow:0px 0px 14px rgba(0,0,0,0.0); } to { box-shadow:-7px 7px 14px rgba(0,0,0,0.4); } }
+
+.fadeInShadow{
+	animation: fadeInShadow normal ease-in 3s;
+	animation-fill-mode: forwards;	
+}
+.column{
+		float:left;
+	}
+@media screen and (max-width: 800px) {
+	.column{
+		padding-top:3vw;
+		padding-bottom:3vw;
+		clear: both;
+		text-align:center;
+		min-width: 100%;
+		display:inline-block;
+	}
+}
+// 20p

@@ -1,0 +1,197 @@
+nav {
+  position: fixed;
+  height: 200px;
+  top: 20vh;
+  left: 3vw;
+  border-radius: 8px;
+  z-index: 1;
+  transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+nav .reference {
+  position: absolute;
+  top: 20vh;
+  left: 0;
+  height: 50px;
+  width: 40px;
+  background: #fff;
+  opacity: .3;
+  pointer-events: none;
+  z-index: 50;
+  transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  border-radius: 8px;
+}
+
+nav>ol {
+  position: fixed;
+  left: 4.5vw;
+}
+
+nav>ol>li {
+  width: 0;
+  height: 40px;
+  padding: 0;
+  overflow: hidden;
+  transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  z-index: 20;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+  margin-left: 1vw;
+  box-shadow: 7px 7px 14px rgba(0, 0, 0, 0.4);
+}
+
+nav>ol>li a {
+  line-height: 40px;
+  font-weight: 800;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2pt;
+  margin-left: 20px;
+}
+
+nav>ol>li .sub-menu {
+  position: absolute;
+  z-index: -1;
+  list-style-type: none;
+  text-align: left;
+  height: 0;
+  overflow: hidden;
+  transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  transform: translateY(0px);
+  width: 192px;
+  margin-left: 1vw;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 7px 7px 14px rgba(0, 0, 0, 0.4);
+}
+
+nav>ol>li .sub-menu li a {
+  font-weight: 500;
+  margin-left: 13px;
+  transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+nav>ol>li .sub-menu li:hover a {
+  margin-left: 18px;
+  transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+nav>ol>li:before {
+  content: "";
+  position: fixed;
+  box-shadow: 7px 7px 14px rgba(0, 0, 0, 0.4);
+  left: 3vw;
+  width: 40px;
+  height: 40px;
+  z-index: -1;
+  visibility: visible;
+  cursor: pointer;
+  transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+nav>ol>li:nth-child(1) {
+  background: #70407A;
+}
+
+nav>ol>li:nth-child(1):before {
+  background: #70407A;
+  border-radius: 8px 8px 0 0;
+}
+
+nav>ol>li:nth-child(2) {
+  background: #b33939;
+}
+
+nav>ol>li:nth-child(2):before {
+  background: #b33939;
+}
+
+nav>ol>li:nth-child(3) {
+  background: #cd6133;
+  transition-delay: .4s;
+}
+
+nav>ol>li:nth-child(3):before {
+  background: #cd6133;
+}
+
+nav>ol>li:nth-child(3) ol li:nth-child(1) {
+  background: #b9572d;
+}
+
+nav>ol>li:nth-child(3) ol li:nth-child(2) {
+  background: #a54d28;
+}
+
+nav>ol>li:nth-child(3) ol li:nth-child(3) {
+  background: #904423;
+}
+
+nav>ol>li:nth-child(4) {
+  background: #cc8e35;
+  transition-delay: .4s;
+}
+
+nav>ol>li:nth-child(4):before {
+  background: #cc8e35;
+}
+
+nav>ol>li:nth-child(4) ol li:nth-child(1) {
+  background: #b9802f;
+}
+
+nav>ol>li:nth-child(4) ol li:nth-child(2) {
+  background: #a4722a;
+}
+
+nav>ol>li:nth-child(4) ol li:nth-child(3) {
+  background: #906424;
+}
+
+nav>ol>li:nth-child(5) {
+  background: #218c74;
+}
+
+nav>ol>li:nth-child(5):before {
+  background: #218c74;
+  border-radius: 0 0 8px 8px;
+}
+
+nav>ol>li:hover {
+  width: 205px;
+  transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+nav>ol>li:hover:nth-child(1):before {
+  border-radius: 8px 0 0 0;
+}
+
+nav>ol>li:hover:nth-child(3) {
+  border-radius: 0 8px 0 0;
+}
+
+nav>ol>li:hover:nth-child(4) {
+  border-radius: 0 8px 0 0;
+}
+
+nav>ol>li:hover:nth-child(5):before {
+  border-radius: 0 0 0 8px;
+}
+
+nav>ol>li:hover .sub-menu {
+  height: 120px;
+  z-index: 300;
+  transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  transition-delay: .4s;
+}
+
+nav:hover {
+  width: 230px;
+  transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+nav:hover .reference {
+  opacity: 0;
+  transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
