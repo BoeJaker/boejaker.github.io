@@ -6,7 +6,7 @@ $palm-springs-splash: #218c74;
 $cyan: #60daaa;
 
 $positionTop:20vh;
-$positionLeft:3vw;
+$positionLeft:2vw;
 
 $menuItemNo: 5;
 $itemHeight: 40px;
@@ -15,7 +15,7 @@ $menuHeight: ($itemHeight * $menuItemNo);
 
 $transition: .5s cubic-bezier(0.770, 0.000, 0.175, 1.000);
 
-nav{
+.pallete-nav{
   position:fixed;
   height:$menuHeight;
   top:$positionTop;
