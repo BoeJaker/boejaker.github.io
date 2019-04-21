@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: gitub.io
+Token: dc0143f0ac6fd3fd40a1f01efbbeb74617148df69b8efde0e61218eb47b0dc39
