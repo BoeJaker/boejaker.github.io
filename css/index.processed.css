@@ -155,3 +155,8 @@ content #contact {
     display: inline-block;
   }
 }
+#welcomebanner{
+  position:absolute;
+  top:10;
+  right:10;
+}
