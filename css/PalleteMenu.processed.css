@@ -24,7 +24,7 @@ nav .reference {
 
 nav>ol {
   position: fixed;
-  /* left: 4.5vw; */
+  left: 4.5vw;
 }
 
 nav>ol>li {
@@ -36,7 +36,7 @@ nav>ol>li {
   z-index: 20;
   border-radius: 0 8px 8px 0;
   cursor: pointer;
-  margin-left: 1vw;
+  /* margin-left: 1vw; */
   box-shadow: 7px 7px 14px rgba(0, 0, 0, 0.4);
 }
 
