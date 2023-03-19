@@ -135,7 +135,11 @@ content{
       background: $palm-springs-splash;
     }
 }
-
+.welcomebanner{
+  position:absolute;
+  top:10;
+  right:10;
+}
 @keyframes fadeInShadow { from { box-shadow:0px 0px 14px rgba(0,0,0,0.0); } to { box-shadow:-7px 7px 14px rgba(0,0,0,0.4); } }
 
 .fadeInShadow{
