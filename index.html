@@ -184,6 +184,34 @@ Cleanup:
 														<li>Startup Company</li>
 												</div>
 										</div>
+										
+										<table id="repoTable">
+											<thead>
+											  <tr>
+												<th>Repository Name</th>
+											  </tr>
+											</thead>
+											<tbody>
+											</tbody>
+										  </table>
+										
+										  <script>
+											const username = "YOUR_GITHUB_USERNAME";
+											const apiUrl = `https://api.github.com/users/${username}/repos`;
+										
+											fetch(apiUrl)
+											  .then(response => response.json())
+											  .then(data => {
+												const tableBody = document.querySelector("#repoTable tbody");
+												data.forEach(repo => {
+												  const row = tableBody.insertRow();
+												  const nameCell = row.insertCell();
+												  nameCell.innerHTML = repo.name;
+												});
+											  })
+											  .catch(error => console.error(error));
+										  </script>
+
 										<div style="float:left; width:100%" ><hr class="trans--growRight hr3"></hr></div>
 										<div class="span" style="float:left ; width: 80vw ; margin: 10px auto;">
 												This page demonstrates the <a href="https://codepen.io/boejaker/pen/xzBwaP" style="color: #FFF">'Modern scroll'</a> website layout
