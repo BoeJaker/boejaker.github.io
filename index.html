@@ -184,9 +184,9 @@ Cleanup:
 		<page id="about">
 				<div id="aboutbanner">
 						<h1>Repositories</h1>
-						<hr class="trans--grow hr1"></hr>
+						<hr class="trans--growLeft hr1"></hr>
 						<h2>More about me</h2>
-						<hr class="trans--grow hr2"></hr>
+						<hr class="trans--growRight hr2"></hr>
 				</div>
 				</div>
 				<subdiv id="aboutContent">
@@ -199,19 +199,19 @@ Cleanup:
 								</div>
 								<hr class="trans--growLeft hr3"></hr>
 								<div class="colspan"">
-										<div class="column" style="margin: 0 auto; width: 33%; float: left; background-color: #b33939;">
+										<div class="column" style="margin: 0 auto; width: 33%; float: left;">
 												<b>Neural Networks</b></br><hr class="trans--growLeft hr3"></hr>
 												<li>Single layer perceptron</li>
 												<li>Multi layer neural network</li>
 												<li>Recurrant Neural Network</li>
 										</div>
-										<div class="column" style="width: 33%; margin: 0 auto; float: left ; background-color: #cd6133">
+										<div class="column" style="width: 33%; margin: 0 auto; float: left ; ">
 												<b>Firmware</b></br><hr class="trans--growLeft hr3"></hr>
 												<li>ESP32 Wifi Packet Sniffer</li>
 												<li>ESP32 deAuth </li>
 												<li>ESP32 Wifi Radar</li>
 										</div>
-										<div class="column" style="width: 33%; margin: 0 auto ; float: left ;background-color: #cc8e35;">
+										<div class="column" style="width: 33%; margin: 0 auto ; float: left;">
 											<b>Docker Labs</b> </br> <hr class="trans--growLeft hr3"></hr>
 											<li>Pentesting</li>
 											<li>Reverse Engineering</li>
@@ -231,22 +231,72 @@ Cleanup:
 						</div>
 				</div>
 		</subdiv>
-				</subdiv>
-				<subdiv id="kabobscontent"></subdiv>
-				<subdiv id="shishkabobs">
-						<h2>Shishkabobs</h2>
-				</subdiv>
-				<subdiv id="bbqkabobs">
-						<h2>BBQ kabobs</h2>
-				</subdiv>
-				<subdiv id="summerkabobs">
-						<h2>Summer kabobs</h2>
-				</subdiv>
+	    <div id="repos">
+					<table class="table">
+						<thead>
+						  <tr>
+							<th>Repository Name</th>
+							<th>Last Update</th>
+							<th>README</th>
+						  </tr>
+						</thead>
+						<tbody id="repo-list" style="height:20vh;">
+						  <!-- Repositories will be added here dynamically -->
+						</tbody>
+					  </table>
+		</div>
+
 		</page>
 
 		<page id="layouts">
+			<div id="aboutbanner"></div>
 				<h1>Web & App Design</h1>
-				<subdiv id="widgetscontent"></subdiv>
+				<hr class="trans--growLeft hr1"></hr>
+				<h2>More about me</h2>
+				<hr class="trans--growRight hr1"></hr>
+			</div>
+				<hr class="trans--growRight hr2"></hr>
+				<subdiv id="widgetscontent">
+					<div class="square">
+					<div class="table">
+							<div class="span">
+								<!-- <b>Intro</b></br><hr class="trans--growLeft hr3"></hr> -->
+									Welcome to my web-design & technical-demo homepage.</br>Here you will example website layouts & designs, technical demos. All of these have working demos, availible to use from this website. You will also find
+									future design concepts.
+							</div>
+							<hr class="trans--growLeft hr3"></hr>
+							<div class="colspan"">
+									<div class="column" style="margin: 0 auto; width: 33%; float: left;">
+											<b>Apps</b></br><hr class="trans--growLeft hr3"></hr>
+											<li>GoPuff Inventory Optimizer (GoaTier)</li>
+											<li>Derivatives backtester</li>
+											<li></li>
+									</div>
+									<div class="column" style="width: 33%; margin: 0 auto; float: left ;">
+											<b>Web interfaces</b></br><hr class="trans--growLeft hr3"></hr>
+											<li>Any UI - A customizable, modular web interface</li>
+											<li>Modern Scroll - A Modern "pageless" design for a website </li>
+											<li></li>
+									</div>
+									<div class="column" style="width: 33%; margin: 0 auto ; float: left ;">
+										<b>Code Pen</b> </br> <hr class="trans--growLeft hr3"></hr>
+										<li>Charting elements</li>
+										<li>Interface elements</li>
+										<li>Input elements</li>
+								</div>
+							</div>
+							
+							<div style="float:left; width:100%" ><hr class="trans--growRight hr3"></hr></div>
+							<div class="span" style="float:left ; width: 80vw ; margin: 10px auto;">
+									This page demonstrates the <a href="https://codepen.io/boejaker/pen/xzBwaP" style="color: #FFF">'Modern scroll'</a> website layout
+							</div>
+							<div style="float:left;height:1vw"></div>
+							<span class="l1"></span>
+							<span class="l2"></span>
+							<span class="l3"></span>
+							<span class="l4"></span>
+					</div>
+			</div></subdiv>
 				<subdiv id="bigwidgets">
 					<div class="table" style="display:inline-block ; padding:10px ; width:80vw; height 90vh;">
 						<div class="colspan" style="width:78vw; margin: 10px auto; padding: 1vw">
@@ -283,46 +333,67 @@ Cleanup:
 							</div>
 					</div>
 				</subdiv>
-				<subdiv id="hugewidgets">
-						<div class="colspan" style="width:78vw; margin: 10px auto; padding: 1vw">
-							<div class="column" style="width: 33%; margin: 0 auto;">
-									<b>boejaker.com:</b></br>
-									A collection of writeups on my various projects
-
-							</div>
-							<div class="column" style="width: 33%; margin: 0 auto ;">
-									<b>maxhodl.com:</b> </br>
-									
-							</div>
-							<div class="column" style="margin: 0 auto; width: 33%;">
-									<b>codepen.com</b></br>
-									My codepen site contains snippets I use for web design.
-							</div>
-					</div>
-				</subdiv>
 		</page>
 
 		<page id="elements">
+			<div id="aboutbanner">
 				<h1>Websites</h1>
-				<div class="colspan" style="width:78vw; margin: 10px auto; padding: 1vw">
-					<div class="column" style="width: 33%; margin: 0 auto;">
-							<b>boejaker.com:</b></br>
-							A collection of writeups on my various projects
-
+				<hr class="trans--growLeft hr1"></hr>
+				<h2>More about me</h2>
+			</div>
+				<hr class="trans--growRight hr2"></hr>
+				<subdiv id="elementscontent"></subdiv>
+				<div class="square">
+					<div class="table">
+							<div class="span">
+								<!-- <b>Intro</b></br><hr class="trans--growLeft hr3"></hr> -->
+									Welcome to my web-design & technical-demo homepage.</br>Here you will example website layouts & designs, technical demos. All of these have working demos, availible to use from this website. You will also find
+									future design concepts.
+							</div>
+							<hr class="trans--growLeft hr3"></hr>
+							<div class="colspan"">
+									<div class="column" style="margin: 0 auto; width: 33%; float: left; ">
+											<b>Neural Networks</b></br><hr class="trans--growLeft hr3"></hr>
+											<li>Single layer perceptron</li>
+											<li>Multi layer neural network</li>
+											<li>Recurrant Neural Network</li>
+									</div>
+									<div class="column" style="width: 33%; margin: 0 auto; float: left ;">
+											<b>Firmware</b></br><hr class="trans--growLeft hr3"></hr>
+											<li>ESP32 Wifi Packet Sniffer</li>
+											<li>ESP32 deAuth </li>
+											<li>ESP32 Wifi Radar</li>
+									</div>
+									<div class="column" style="width: 33%; margin: 0 auto ; float: left ;"">
+										<b>Docker Labs</b> </br> <hr class="trans--growLeft hr3"></hr>
+										<li>Pentesting</li>
+										<li>Reverse Engineering</li>
+										<li>Honeypots</li>
+								</div>
+							</div>
+							
+							<div style="float:left; width:100%" ><hr class="trans--growRight hr3"></hr></div>
+							<div class="span" style="float:left ; width: 80vw ; margin: 10px auto;">
+									This page demonstrates the <a href="https://codepen.io/boejaker/pen/xzBwaP" style="color: #FFF">'Modern scroll'</a> website layout
+							</div>
+							<div style="float:left;height:1vw"></div>
+							<span class="l1"></span>
+							<span class="l2"></span>
+							<span class="l3"></span>
+							<span class="l4"></span>
 					</div>
-					<div class="column" style="width: 33%; margin: 0 auto ;">
-							<b>maxhodl.com:</b> </br>
-							A finance blog focused on digital finaince
-					</div>
-					<div class="column" style="margin: 0 auto; width: 33%;">
-							<b>codepen.com</b></br>
-							My codepen site contains snippets I use for web design.
-					</div>
-				</div>
+			</div>
+		</div>
+	</subdiv>
 		</page>
 
 		<page id="contact" class="page">	
+			<div id="aboutbanner"></div>
 			<h1>Contact</h1>
+			<hr class="trans--growLeft hr1"></hr>
+			<h2>How to find me</h2>
+			</div>
+			<hr class="trans--growRight hr2"></hr>
 			<div class="colspan" style="width:78vw; margin: 10px auto; padding: 1vw">
 				<div class="column" style="width: 33%; margin: 0 auto;">
 						<b>Email:</b></br>
@@ -339,6 +410,7 @@ Cleanup:
 						indeed.com
 				</div>
 			</div>
+						  
 		</page>
 
 <footer>Copyright © 2018 Clockwurk Marketing Inc.</footer>
@@ -352,6 +424,38 @@ Cleanup:
 <script src="scripts/Draw.js"></script>
 <script src="scripts/PalleteMenu.js"></script>
 <script src="scripts/Memory.js"></script>
+<script>
+	// GitHub username and API endpoint
+	const username = "boejaker";
+	const endpoint = `https://api.github.com/users/${username}/repos`;
+  
+	// Fetch repos using GitHub API
+	fetch(endpoint)
+	  .then(response => response.json())
+	  .then(data => {
+		const repos = data.map(repo => ({
+		  name: repo.name,
+		  updated: new Date(repo.updated_at),
+		  readme: repo.html_url + "/blob/master/README.md"
+		}));
+  
+		// Sort by most recent update date
+		repos.sort((a, b) => b.updated - a.updated);
+  
+		// Create rows in the table for each repo
+		const tbody = document.querySelector("#repo-list");
+		repos.forEach(repo => {
+		  const row = document.createElement("tr");
+		  row.innerHTML = `
+			<td>${repo.name}</td>
+			<td>${repo.updated.toLocaleString()}</td>
+			<td><a href="${repo.readme}">README</a></td>
+		  `;
+		  tbody.appendChild(row);
+		});
+	  })
+	  .catch(error => console.error(error));
+  </script>
 </body>
 
 </html>

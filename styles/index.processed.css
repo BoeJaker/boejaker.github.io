@@ -172,8 +172,8 @@ content #contact {
   }
 }
 .animation{
-  position: fixed;
-  top:1vh;
+  position: absolute;
+  top:2vh;
   right:5px;
 }
 .banner{
@@ -194,8 +194,21 @@ content #contact {
 body::-webkit-scrollbar {
   display: none;
 }
+div::-webkit-scrollbar {
+  display: none;
+}
 /* Hide scrollbar for IE, Edge and Firefox */
 .table {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+}
+#repos{
+  height: auto;
+  max-height: 20vh;
+  overflow-y: scroll;
+  padding:10px;
+}
+#repos * {
+  padding:10px;
+  text-align: left;
 }
