@@ -51,7 +51,7 @@ content page .table {
   background-color: rgba(200, 200, 200, 0.1);
   z-index: 300;
   max-height: 66vh; /* Sets the maximum height of the div to 66% of the viewport height */
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 content page .table b {

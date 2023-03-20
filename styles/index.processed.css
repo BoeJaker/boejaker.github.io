@@ -15,6 +15,8 @@
 body {
   margin: 0;
   padding: 0;
+  overflow-x:hidden;
+  overflow-y:scroll;
 }
 
 content {
@@ -24,11 +26,11 @@ content {
 
 content page {
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: -20px;
+  /* padding: -20px; */
 }
 
 content page subdiv {
@@ -50,6 +52,10 @@ content page .table {
   -webkit-font-smoothing: antialiased;
   background-color: rgba(200, 200, 200, 0.1);
   z-index: 300;
+  max-height: 66vh; /* Sets the maximum height of the div to 66% of the viewport height */
+  width: inherit;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 content page .table b {
@@ -141,10 +147,18 @@ content #contact {
   animation-fill-mode: forwards;
 }
 
-.column {
-  float: left;
-}
 
+.column {
+  display: block;
+  float: left;
+  flex-grow: 1;
+}
+.colspan{
+  /* overflow-y: hidden; */
+  display: flex;
+  width: inherit;
+  float:left;
+}
 @media screen and (max-width: 800px) {
   .column {
     padding-top: 3vw;
@@ -154,4 +168,32 @@ content #contact {
     min-width: 100%;
     display: inline-block;
   }
+}
+.animation{
+  position: absolute;
+  top:2vh;
+  right:10px;
+}
+.banner{
+  display: flex;
+  width: 100%;
+}
+#welcomebanner{
+  align:left ;
+  position: relative;
+  left:-20vw;
+  top:2vh;
+  text-align: left;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.table::-webkit-scrollbar {
+  display: none;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.table {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
