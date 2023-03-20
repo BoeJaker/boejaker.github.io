@@ -52,8 +52,9 @@ content page .table {
   -webkit-font-smoothing: antialiased;
   background-color: rgba(200, 200, 200, 0.1);
   z-index: 300;
-  max-height: 66vh; /* Sets the maximum height of the div to 66% of the viewport height */
+  max-height: 80vh; /* Sets the maximum height of the div to 66% of the viewport height */
   width: inherit;
+  /* display: inline-flex; */
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -156,6 +157,7 @@ content #contact {
 .colspan{
   /* overflow-y: hidden; */
   display: flex;
+  flex-wrap: wrap;
   width: inherit;
   float:left;
 }
@@ -170,9 +172,9 @@ content #contact {
   }
 }
 .animation{
-  position: absolute;
-  top:2vh;
-  right:10px;
+  position: fixed;
+  top:1vh;
+  right:5px;
 }
 .banner{
   display: flex;
