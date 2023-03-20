@@ -143,10 +143,11 @@ content #contact {
 
 .column {
   float: left;
-  height: 100%
+  flex-grow: 1;
 }
 .colspan{
   overflow: scroll;
+  display: flex;
 }
 @media screen and (max-width: 800px) {
   .column {
