@@ -143,7 +143,6 @@ content #contact {
 
 .column {
   float: left;
-  height:100%
 }
 
 @media screen and (max-width: 800px) {
@@ -155,9 +154,4 @@ content #contact {
     min-width: 100%;
     display: inline-block;
   }
-}
-#welcomebanner{
-  position:absolute;
-  top:10;
-  right:10;
 }
