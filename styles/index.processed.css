@@ -57,6 +57,7 @@ content page .table {
   /* display: inline-flex; */
   overflow-y: scroll;
   overflow-x: hidden;
+  padding-top: 2vh;
 }
 
 content page .table b {
