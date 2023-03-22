@@ -146,6 +146,10 @@ content #contact {
 .column {
   float: left;
   flex-grow: 1;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  padding-left: 1vw;
+  padding-right: 1vw;
 }
 .colspan{
   overflow: scroll;
