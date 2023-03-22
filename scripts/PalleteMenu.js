@@ -57,3 +57,7 @@ $(window).scroll(function(){
 	}, 250));
 		};
 });
+
+// document.getElementById('welcome_pallete').addEventListener('click', function() {
+//   location.href = '#welcome'
+// }, false);

@@ -117,29 +117,29 @@ Cleanup:
 <content>
 		<page id="welcome">
 			
-				<div class="banner" id="hellobanner">
-					<div id="welcomebanner"> 
-						<h2>Joseph <br/>Bakers<br/>Portfolio</h2>
-						<hr class="trans--growRight hr2"></hr>
-					</div>
-						<div class="animation">
-								<div class="animation__container">
-										<p class="animation__container__text">Hello</p>
-
-										<ul class="animation__container__list" style="position:relative">
-												<li class="animation__container__list__item">world !</li>
-												<li class="animation__container__list__item">boe !</li>
-												<li class="animation__container__list__item">users !</li>
-												<li class="animation__container__list__item">satoshi !</li>
-										</ul>
-								</div>
-						</div>
-				
+				<!-- <div class="banner" id="hellobanner"> -->
+				<div id="welcomebanner"> 
+					<h2>Joseph <br/>Bakers<br/>Portfolio</h2>
+					<hr class="trans--growRight hr2"></hr>
 				</div>
+				<div class="animation">
+						<div class="animation__container">
+								<p class="animation__container__text">Hello</p>
+
+								<ul class="animation__container__list" style="position:relative">
+										<li class="animation__container__list__item">world !</li>
+										<li class="animation__container__list__item">boe !</li>
+										<li class="animation__container__list__item">users !</li>
+										<li class="animation__container__list__item">satoshi !</li>
+								</ul>
+						</div>
+				</div>
+				
+				<!-- </div> -->
 				<subdiv id="welcomeContent">
 						<div class="square">
 								<div class="table">
-										<div class="span" style="padding-bottom: 2vh;">
+										<div class="span">
 											<!-- <b>Intro</b></br><hr class="trans--growLeft hr3"></hr> -->
 												Welcome to my web-design & technical-demo homepage.</br>Here you will example website layouts & designs, technical demos. All of these have working demos, availible to use from this website. You will also find
 												future design concepts.
@@ -221,9 +221,23 @@ Cleanup:
 								
 								<div style="float:left; width:100%" ><hr class="trans--growRight hr3"></hr></div>
 								<div class="span" style="float:left ; width: 80vw ; margin: 10px auto;">
-										This page demonstrates the <a href="https://codepen.io/boejaker/pen/xzBwaP" style="color: #FFF">'Modern scroll'</a> website layout
+										Below is a list of all of my repos with links to their readme files
 								</div>
-								<div style="float:left;height:1vw"></div>
+								<div id="repos">
+									<table class="table">
+										<thead>
+										  <tr>
+											<th>Repository Name</th>
+											<th>Last Update</th>
+											<th>README</th>
+										  </tr>
+										</thead>
+										<tbody id="repo-list" style="height:20vh;">
+										  <!-- Repositories will be added here dynamically -->
+										</tbody>
+									  </table>
+						</div>
+														<div style="float:left;height:1vw"></div>
 								<span class="l1"></span>
 								<span class="l2"></span>
 								<span class="l3"></span>
@@ -231,20 +245,7 @@ Cleanup:
 						</div>
 				</div>
 		</subdiv>
-	    <div id="repos">
-					<table class="table">
-						<thead>
-						  <tr>
-							<th>Repository Name</th>
-							<th>Last Update</th>
-							<th>README</th>
-						  </tr>
-						</thead>
-						<tbody id="repo-list" style="height:20vh;">
-						  <!-- Repositories will be added here dynamically -->
-						</tbody>
-					  </table>
-		</div>
+	   
 
 		</page>
 

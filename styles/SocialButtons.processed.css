@@ -1,7 +1,7 @@
 #social {
   position: fixed;
   top: 20vh;
-  right: 1.4vw;
+  left: 90vw;
   z-index: 300;
   border: 3px solid;
   border-color: rgba(200, 200, 200, 0.4);
