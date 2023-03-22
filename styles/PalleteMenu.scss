@@ -64,6 +64,7 @@ $transition: .5s cubic-bezier(0.770, 0.000, 0.175, 1.000);
         text-transform:uppercase;
         letter-spacing:2pt;
         margin-left:20px;
+        padding:10px
       }
       
       // second level
@@ -84,7 +85,7 @@ $transition: .5s cubic-bezier(0.770, 0.000, 0.175, 1.000);
 				li{
           a{
             font-weight:500;
-            margin-left: 13px;
+            padding-left: 13px;
             transition:$transition;
           }
           &:hover{
