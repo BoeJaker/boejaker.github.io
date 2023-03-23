@@ -40,6 +40,7 @@ content page {
 
 content page subdiv {
   width: 98vw;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   padding: 2vh 10%;
@@ -198,6 +199,7 @@ content #contact {
 
 }
 #welcomebanner{
+  height: 10vh;
   align:left ;
   position: absolute;
   left:10vw;
@@ -212,12 +214,15 @@ content #contact {
 body::-webkit-scrollbar {
   display: none;
 }
+iframe::-webkit-scrollbar {
+  display: none;
+}
 div::-webkit-scrollbar {
   display: none;
 }
 /* Hide scrollbar for IE, Edge and Firefox */
 .table {
-  height:fit-content;
+  height:inherit;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
   /* overflow-y: scroll; */
@@ -239,7 +244,13 @@ div::-webkit-scrollbar {
   padding-right: 1vw;
 }
 .square{
-  height:fit-content;
+  height:80vh;
   position: fixed;
   overflow: hidden;
 }
+/* .banner{
+  width:50vw;
+  padding-top: 2vh;
+  text-align: center;
+} */
+a { color: inherit; } 
