@@ -1,7 +1,7 @@
 #social {
   position: fixed;
   top: 20vh;
-  left: 93vw;
+  left: 3vh;
   z-index: 300;
   border: 3px solid;
   border-color: rgba(200, 200, 200, 0.4);
@@ -13,15 +13,15 @@
 .socialButton {
   color: #fff;
   background: rgba(200, 200, 200, 0);
-  font-size: 2.4vw;
+  font-size: 4vh;
   border-radius: 4px;
   text-align: center;
   text-decoration: none;
   font-family: fontawesome;
   position: relative;
   display: inline-block;
-  width: 4vw;
-  height: 3vw;
+  width: 5vh;
+  height: 5vh;
   padding-top: 0.6vh;
   padding-bottom: 2vh;
   margin: 0.6vh;

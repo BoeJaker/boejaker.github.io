@@ -1,5 +1,5 @@
 nav {
-  position: fixed;
+  /* position: fixed; */
   height: 200px;
   top: 20vh;
   left: 3vw;
@@ -7,7 +7,11 @@ nav {
   z-index: 1;
   transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
 }
-
+.pallete-nav{
+  position:fixed;
+  top:20px;
+  left: 90px;
+}
 nav .reference {
   position: absolute;
   top: 20vh;
