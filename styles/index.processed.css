@@ -40,7 +40,7 @@ content page {
 
 content page subdiv {
   width: 98vw;
-  height: 70vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   padding-left: 10%;
@@ -112,7 +112,7 @@ content #about {
 }
 
 content #layouts {
-  background: #3a9e5c;
+  background: #3a9e6c;
 }
 
 content #layouts #bigwidgets {
@@ -173,6 +173,7 @@ content #contact {
   padding-bottom: 1vh;
   padding-left: 1vw;
   padding-right: 1vw;
+  background:rgba(255, 255, 255, 0.1);
 }
 .colspan{
   overflow-y: scroll;
@@ -189,6 +190,7 @@ content #contact {
     text-align: center;
     min-width: 100%;
     display: inline-block;
+
   }
 }
 .animation{
@@ -231,10 +233,10 @@ content #contact {
   padding-right: 1vw;
 }
 .square{
-  height:80%;
+  height:100%;
   position: fixed;
   overflow: hidden;
-  top:20%;
+  top:15%;
   
 }
 iframe{

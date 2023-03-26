@@ -108,24 +108,24 @@
 }
 
 .pallete-nav>ol>li:nth-child(3) {
-  background: #3a9e5c;
+  background: #3a9e6c;
   transition-delay: .4s;
 }
 
 .pallete-nav>ol>li:nth-child(3):before {
-  background: #3a9e5c;
+  background: #3a9e6c;
 }
 
 .pallete-nav>ol>li:nth-child(3) ol li:nth-child(1) {
-  background: #3a9e5c;
+  background: #3a9e6c;
 }
 
 .pallete-nav>ol>li:nth-child(3) ol li:nth-child(2) {
-  background: #3a9e5c;
+  background: #3a9e6c;
 }
 
 .pallete-nav>ol>li:nth-child(3) ol li:nth-child(3) {
-  background: #3a9e5c;
+  background: #3a9e6c;
 }
 
 .pallete-nav>ol>li:nth-child(4) {
