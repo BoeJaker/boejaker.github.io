@@ -112,7 +112,7 @@ content #about {
 }
 
 content #layouts {
-  background: #3a9e6c;
+  background: #3a9e5c;
 }
 
 content #layouts #bigwidgets {
@@ -165,6 +165,9 @@ content #contact {
   position: relative;
   top: 10vh;
 }
+#welcomeBanner h2{
+  text-shadow: 2px 2px #ff0000;
+}
 .column {
   display: block;
   float: left;
@@ -174,6 +177,7 @@ content #contact {
   padding-left: 1vw;
   padding-right: 1vw;
   background:rgba(255, 255, 255, 0.1);
+  
 }
 .colspan{
   overflow-y: scroll;

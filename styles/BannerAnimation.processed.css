@@ -9,7 +9,7 @@
   position: absolute;
   display: block;
   margin: 1.4vw auto;
-  right: 7vw;
+  left: 40vw;
   height: 40px;
   overflow: hidden;
   font-family: 'Catamaran', sans-serif;
@@ -18,13 +18,14 @@
   font-size: 2vw;
   line-height: 40px;
   color: #DDDDDD;
+  width: 60vw;
 }
 
 .animation__container {
   font-weight: 800;
   overflow: hidden;
   height: 40px;
-  width: 29vw;
+  width: 30vw;
 }
 
 .animation__container:before {
@@ -42,7 +43,7 @@
   position: absolute;
   top: 0;
   color: rgba(244, 244, 244, 0.8);
-  font-size: 3vw;
+  font-size: 2vw;
   line-height: 40px;
   -webkit-animation-name: opacity;
   -webkit-animation-duration: 2s;
@@ -78,6 +79,7 @@
 .animation__container__list__item {
   line-height: 40px;
   margin: 0;
+  padding: 2px;
 }
 
 @-webkit-keyframes opacity {
@@ -232,9 +234,9 @@
   }
 }
 
-@media screen and (max-width: 800px) {
+/* @media screen and (max-width: 800px) {
   .animation {
     right: 35%;
     top: 10vw;
   }
-}
+} */
