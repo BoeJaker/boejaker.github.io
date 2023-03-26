@@ -81,20 +81,25 @@ content page .table a:hover {
 }
 
 content h1 {
-  font-size: 4vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  font-size: 7vh;
   text-transform: uppercase;
   font-weight: 800;
   letter-spacing: 1vw;
-  line-height: 4vw;
+  line-height: 4vh;
   margin: 1vw 0 1vw;
+  max-width: 90vw;
 }
 
 content h2 {
-  font-size: 2vw;
+  /* padding-top: 1vh; */
+  /* padding-bottom: 1vh; */
+  font-size: 3vh;
   text-transform: uppercase;
   font-weight: 500;
   letter-spacing: 0.4vw;
-  line-height: 2vw;
+  line-height: 3vh;
   margin: 1vw 0 1vw;
 }
 
@@ -123,7 +128,7 @@ content #layouts #hugewidgets {
 }
 
 content #elements {
-  background: #e46128;
+  background: #b9693e;
 }
 
 content #elements #shishkabobs {
@@ -208,26 +213,7 @@ content #contact {
   text-align: left;
   /* padding-bottom: 1vh; */
 }
-/* Hide scrollbar for Chrome, Safari and Opera */
-.table::-webkit-scrollbar {
-  /* display: none; */
-}
-body::-webkit-scrollbar {
-  display: none;
-}
-iframe::-webkit-scrollbar {
-  display: none;
-}
-div::-webkit-scrollbar {
-  /* display: none; */
-}
-/* Hide scrollbar for IE, Edge and Firefox */
-.table {
-  height:inherit;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-  /* overflow-y: scroll; */
-}
+
 #repos{
   /* height: 80vh; */
   width:100%;
@@ -248,28 +234,41 @@ div::-webkit-scrollbar {
   height:80%;
   position: fixed;
   overflow: hidden;
+  top:20%;
+  
 }
 iframe{
   height: fit-content;
 }
-/* .banner{
-  width:50vw;
-  padding-top: 2vh;
-  text-align: center;
-} */
-a { color: inherit; } 
-#welcomeContent{
-  /* padding-top: 10vh; */
-}
 
+a { color: inherit; } 
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
 }
-
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.5);
   border-radius: 7px;
   margin-right: 10px;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.table::-webkit-scrollbar {
+  /* display: none; */
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+iframe::-webkit-scrollbar {
+  display: none;
+}
+div::-webkit-scrollbar {
+  /* display: none; */
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.table {
+  height:inherit;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  /* overflow-y: scroll; */
 }
