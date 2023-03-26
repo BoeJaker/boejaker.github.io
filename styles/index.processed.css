@@ -43,7 +43,8 @@ content page subdiv {
   height: 70vh;
   display: flex;
   flex-direction: column;
-  padding: 2vh 10%;
+  padding-left: 10%;
+  padding-top: 1%;
 }
 
 content page footer {
@@ -58,10 +59,10 @@ content page .table {
   -webkit-font-smoothing: antialiased;
   background-color: rgba(200, 200, 200, 0.1);
   z-index: 300;
-  max-height: 80vh; /* Sets the maximum height of the div to 66% of the viewport height */
+  height: 100%; /* Sets the maximum height of the div to 66% of the viewport height */
   width: inherit;
   /* display: inline-flex; */
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
   overflow-x: hidden;
   padding-top: 2vh;
 }
@@ -98,15 +99,15 @@ content h2 {
 }
 
 content #welcome {
-  background: #70407A;
+  background: #4f4dc4;
 }
 
 content #about {
-  background: #b33939;
+  background: #724ab2;
 }
 
 content #layouts {
-  background: #cd6133;
+  background: #3a9e5c;
 }
 
 content #layouts #bigwidgets {
@@ -122,7 +123,7 @@ content #layouts #hugewidgets {
 }
 
 content #elements {
-  background: #cc8e35;
+  background: #e46128;
 }
 
 content #elements #shishkabobs {
@@ -138,7 +139,7 @@ content #elements #summerkabobs {
 }
 
 content #contact {
-  background: #218c74;
+  background: #88263b;
 }
 
 @keyframes fadeInShadow {
@@ -169,7 +170,7 @@ content #contact {
   padding-right: 1vw;
 }
 .colspan{
-  /* overflow-y: hidden; */
+  overflow-y: scroll;
   display: flex;
   flex-wrap: wrap;
   width: inherit;
@@ -177,8 +178,8 @@ content #contact {
 }
 @media screen and (max-width: 800px) {
   .column {
-    padding-top: 3vw;
-    padding-bottom: 3vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
     clear: both;
     text-align: center;
     min-width: 100%;
@@ -186,8 +187,8 @@ content #contact {
   }
 }
 .animation{
-  position: fixed;
-  top:2vh;
+  position: absolute!important;
+  top:0!important;
   left: 50vw;
   width:30vw;
   height:100%;
@@ -199,17 +200,17 @@ content #contact {
 
 }
 #welcomebanner{
-  height: 10vh;
+  /* height: 10vh; */
   align:left ;
   position: absolute;
   left:10vw;
   top:2vh;
   text-align: left;
-  padding-bottom: 1vh;;
+  /* padding-bottom: 1vh; */
 }
 /* Hide scrollbar for Chrome, Safari and Opera */
 .table::-webkit-scrollbar {
-  display: none;
+  /* display: none; */
 }
 body::-webkit-scrollbar {
   display: none;
@@ -218,7 +219,7 @@ iframe::-webkit-scrollbar {
   display: none;
 }
 div::-webkit-scrollbar {
-  display: none;
+  /* display: none; */
 }
 /* Hide scrollbar for IE, Edge and Firefox */
 .table {
@@ -244,9 +245,12 @@ div::-webkit-scrollbar {
   padding-right: 1vw;
 }
 .square{
-  height:80vh;
+  height:80%;
   position: fixed;
   overflow: hidden;
+}
+iframe{
+  height: fit-content;
 }
 /* .banner{
   width:50vw;
@@ -254,3 +258,18 @@ div::-webkit-scrollbar {
   text-align: center;
 } */
 a { color: inherit; } 
+#welcomeContent{
+  /* padding-top: 10vh; */
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 7px;
+  margin-right: 10px;
+}
