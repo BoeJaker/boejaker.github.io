@@ -35,3 +35,8 @@
 .socialButton:hover {
   background: rgba(200, 200, 200, 0.4);
 }
+@media screen and (max-width: 800px) {
+  #social {
+  visibility: hidden;
+  }
+}

@@ -172,6 +172,7 @@ content #contact {
   display: block;
   float: left;
   flex-grow: 1;
+  /* height: 100%; */
   padding-top: 1vh;
   padding-bottom: 1vh;
   padding-left: 1vw;
@@ -183,17 +184,20 @@ content #contact {
   overflow-y: scroll;
   display: flex;
   flex-wrap: wrap;
-  width: inherit;
+  width: 100%;
   float:left;
 }
 @media screen and (max-width: 800px) {
   .column {
     padding-top: 2vh;
     padding-bottom: 2vh;
+    padding-left: 3vw;
+    padding-right: 3vw;
     clear: both;
     text-align: center;
     min-width: 100%;
     display: inline-block;
+    min-height: 20vw;
 
   }
 }
@@ -233,8 +237,8 @@ content #contact {
 }
 .span{
   padding-bottom: 2vh;
-  padding-left: 1vw; 
-  padding-right: 1vw;
+  padding-left: 10%; 
+  padding-right: 10%;
 }
 .square{
   height:100%;
@@ -273,7 +277,6 @@ div::-webkit-scrollbar {
 }
 /* Hide scrollbar for IE, Edge and Firefox */
 .table {
-  height:inherit;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
   /* overflow-y: scroll; */

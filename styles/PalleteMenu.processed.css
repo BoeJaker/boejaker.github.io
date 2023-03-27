@@ -24,7 +24,7 @@
 
 .pallete-nav>ol {
   position: fixed;
-  right: 7vw;
+  right: 5vw;
 }
 
 .pallete-nav>ol>li {
@@ -38,7 +38,7 @@
   border-radius:8px 0 0 8px;
   cursor: pointer;
   /* margin-left: 1vw; */
-  box-shadow: 7px 7px 14px rgba(0, 0, 0, 0.4);
+  box-shadow: -5px 5px 14px rgba(0, 0, 0, 0.4);
 }
 
 .pallete-nav>ol>li a {
@@ -68,11 +68,12 @@
   box-shadow: 7px 7px 14px rgba(0, 0, 0, 0.4);
 }
 .pallete-nav>ol>li .menu-item {
- left:70vw 
+ left:70vw ;
+ box-shadow:   0px 0px 14px rgba(0, 0, 0, 0.4);
 }
 .pallete-nav>ol>li .sub-menu li a {
   font-weight: 500;
-  margin-left: 13px;
+  /* margin-left: 13px; */
   transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
@@ -168,19 +169,19 @@
 }
 
 .pallete-nav>ol>li:hover:nth-child(1):before {
-  border-radius: 8px 0 0 0;
+  border-radius: 8px 0 0 8px;
 }
 
 .pallete-nav>ol>li:hover:nth-child(3) {
-  border-radius: 0 8px 0 0;
+  border-radius: 8px 0 0 8px;
 }
 
 .pallete-nav>ol>li:hover:nth-child(4) {
-  border-radius: 0 8px 0 0;
+  border-radius: 8px 0 0 8px;
 }
 
 .pallete-nav>ol>li:hover:nth-child(5):before {
-  border-radius: 0 0 0 8px;
+  border-radius: 8px 0 0 8px;
 }
 
 .pallete-nav>ol>li:hover .sub-menu {
