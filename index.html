@@ -541,32 +541,30 @@ Cleanup:
 	// GitHub username and API endpoint
 	const username = "boejaker";
 	const endpoint = `https://api.github.com/users/${username}/repos`;
-  
-	// Fetch repos using GitHub API
-	fetch(endpoint)
-	  .then(response => response.json())
-	  .then(data => {
-		const repos = data.map(repo => ({
-		  name: repo.name,
-		  updated: new Date(repo.updated_at),
-		  readme: repo.html_url + "/blob/master/README.md"
-		}));
-  
-		// Sort by most recent update date
-		repos.sort((a, b) => b.updated - a.updated);
-  
-		// Create rows in the table for each repo
-		const tbody = document.querySelector("#repo-list");
-		repos.forEach(repo => {
-		  const row = document.createElement("tr");
-		  row.innerHTML = `
-		  	<td><a href="${repo.readme}">${repo.name}</a></td>
-			<td>${repo.updated.toLocaleString()}</td>
-		  `;
-		  tbody.appendChild(row);
-		});
-	  })
-	  .catch(error => console.error(error));
+
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+        const tableBody = document.querySelector("#repoTable tbody");
+        const reposWithSummary = data.filter(repo => {
+          return repo.has_pages && repo.has_issues;
+        });
+        reposWithSummary.forEach(repo => {
+          const summaryUrl = `https://raw.githubusercontent.com/${username}/${repo.name}/master/.summary`;
+          fetch(summaryUrl)
+            .then(response => response.text())
+            .then(summary => {
+              const row = tableBody.insertRow();
+              const nameCell = row.insertCell();
+              const summaryCell = row.insertCell();
+              nameCell.innerHTML = repo.name;
+              summaryCell.innerHTML = summary;
+            })
+            .catch(error => console.error(error));
+        });
+      })
+      .catch(error => console.error(error));
+	  
   </script>
 </body>
 

@@ -37,6 +37,7 @@ $(document).ready(function() {
     },
     function() {
       $(this).addClass('active');
+      
     $(this).removeClass('temp');
     }
   );
