@@ -291,16 +291,17 @@ a { color: inherit; }
     text-align: left;
   }
   td h3 a{
-    margin-left: -20px;
+    padding-left: 20px;
   }
 }
 th, td {
   /* display: block; */
   word-break: break-word; /* Add this line */
   vertical-align: top;
+  padding: 10px;
 }
 td h3 a{
-  margin-left: -20px;
+  /* margin-left: -20px; */
 }
 
 
