@@ -9,7 +9,8 @@
   position: absolute;
   display: block;
   margin: 1.4vw auto;
-  left: 40vw;
+  top: 8vh!important;
+  left: 60vw;
   height: 40px;
   overflow: hidden;
   font-family: 'Catamaran', sans-serif;
