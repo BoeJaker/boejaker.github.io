@@ -43,13 +43,15 @@ content page subdiv {
   height: 80vh;
   display: flex;
   flex-direction: column;
+  /* flex-grow: 0.5; */
   padding-left: 10%;
-  padding-top: 1%;
+  padding-top: 5vw;
 }
 
-content page footer {
+footer {
   color: rgba(249, 249, 249, 0.4);
   position: fixed;
+  width: 100%;
   bottom: 10px;
 }
 
@@ -96,7 +98,7 @@ content h1 {
 }
 
 content h2 {
-  /* padding-top: 1vh; */
+  padding-top: 1vh;
   /* padding-bottom: 1vh; */
   font-size: 4vh;
   text-transform: uppercase;
@@ -175,10 +177,64 @@ content #contact {
 
 #welcomeContent{
   position: relative;
-  top: 10vh;
+  top: 5vh;
 }
 #welcomeBanner h2{
   text-shadow: 2px 2px #ff0000;
+}
+
+.animation{
+  position: absolute!important;
+  top:0!important;
+  left: 10vw;
+  /* width:30vw; */
+  height:100%;
+}
+.animation__container{
+  position: relative;
+  /* top:2vh; */
+  /* right:5px; */
+
+}
+#title{
+  height: 10vw;
+  align:left ;
+  position: absolute;
+  left:10vw;
+  top:2vh;
+  text-align: left;
+}
+#title h2, hr{
+  font-size: 3vh;
+}
+#welcomebanner{
+  height: 5vh;
+  width: 100%;
+}
+.banner{
+  width: 100%;
+  height: fit-content;
+  margin-left:1vh;
+  text-align: center;
+}
+.square{
+  height:100%;
+  position: fixed;
+  overflow: hidden;
+  top:20%;
+}
+.span{
+  width: 100%;
+  padding-bottom: 2vh;
+  padding-left: 10%; 
+  padding-right: 10%;
+}
+.colspan{
+  overflow-y: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  float:left;
 }
 .column {
   display: block;
@@ -191,13 +247,6 @@ content #contact {
   padding-right: 1vw;
   background:rgba(255, 255, 255, 0.1);
   
-}
-.colspan{
-  overflow-y: scroll;
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  float:left;
 }
 @media screen and (max-width: 800px) {
   .column {
@@ -213,83 +262,12 @@ content #contact {
 
   }
 }
-.animation{
-  position: absolute!important;
-  top:0!important;
-  left: 50vw;
-  width:30vw;
-  height:100%;
-}
-.animation__container{
-  position: relative;
-  /* top:2vh;
-  right:5px; */
-
-}
-#welcomebanner{
-  /* height: 10vh; */
-  align:left ;
-  position: absolute;
-  left:10vw;
-  top:2vh;
-  text-align: left;
-  /* padding-bottom: 1vh; */
-}
-
-#repos{
-  /* height: 80vh; */
-  width:100%;
-  /* max-height:80vh; */
-  /* overflow-y: scroll; */
-  padding:10px;
-}
-#repos * {
-  padding:10px;
-  text-align: left;
-}
-.span{
-  width: 100%;
-  padding-bottom: 2vh;
-  padding-left: 10%; 
-  padding-right: 10%;
-}
-.square{
-  height:100%;
-  position: fixed;
-  overflow: hidden;
-  top:15%;
-  
-}
 iframe{
   height: fit-content;
 }
 
 a { color: inherit; } 
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 7px;
-  z-index: 400;
-  /* margin-right: 10px; */
-}
-/* Hide scrollbar for Chrome, Safari and Opera */
-.table::-webkit-scrollbar {
-  /* display: none; */
-}
-body::-webkit-scrollbar {
-  display: none;
-}
-iframe::-webkit-scrollbar {
-  display: none;
-}
-div::-webkit-scrollbar {
-  /* display: none; */
-}
-/* Hide scrollbar for IE, Edge and Firefox */
+
 .table {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
@@ -324,3 +302,31 @@ th, td {
 td h3 a{
   margin-left: -20px;
 }
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 7px;
+  z-index: 400;
+  /* margin-right: 10px; */
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.table::-webkit-scrollbar {
+  /* display: none; */
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+iframe::-webkit-scrollbar {
+  display: none;
+}
+div::-webkit-scrollbar {
+  /* display: none; */
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+

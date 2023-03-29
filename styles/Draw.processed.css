@@ -1,20 +1,33 @@
 .square {
   background: transparent;
   display: block;
-  right: 1vw;
+  /* right: 1vw; */
   margin-left: 0px;
   margin-bottom: 0px;
-  margin-top: 4vw;
+  /* margin-top: 4vw; */
   width: 80vw;
   height: 70vh;
   position: relative;
   visibility: hidden;
+  /* display: flex;
+  flex-direction: column;
+  flex-grow:1; */
+  height:100%;
+  /* position: fixed; */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex-grow:0.5;
+  /* top:10%; */
 }
 
 .square .l1,
 .square .l2,
 .square .l3,
 .square .l4 {
+  display: flex;
+  flex-direction: column;
+  flex-grow:1;
   position: absolute;
   background: transparent;
   width: 0px;
