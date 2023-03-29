@@ -60,7 +60,7 @@ content page .table {
   background-color: rgba(200, 200, 200, 0.1);
   z-index: 300;
   height: 100%; /* Sets the maximum height of the div to 66% of the viewport height */
-  width: inherit;
+  width: 100;
   /* display: inline-flex; */
   overflow-y: scroll;
   overflow-x: hidden;
