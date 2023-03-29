@@ -154,9 +154,10 @@ Cleanup:
 						</div>
 						<div class="span">
 							<hr class="trans--growRight hr3"></hr></br>
-							<h2>Contents</h2></br>
+							<h2>Contents</h2>
+							<!-- </br> -->
 							<!-- <hr class="trans--growLeft hr3"></hr></br> -->
-							This portfolio contains the following sections
+							<!-- This portfolio contains the following sections -->
 						</div>
 						<hr class="trans--growLeft hr3"></hr>
 						<div class="colspan">
@@ -184,7 +185,7 @@ Cleanup:
 
 							<div style="float:left; width:100%" ><hr class="trans--growRight hr3"></hr></div>
 							<div class="span" style="float:left ; width: 80vw ; margin: 10px auto;">
-									This page demonstrates the <a href="https://codepen.io/boejaker/pen/xzBwaP" style="color: #FFF">'Modern scroll'</a> website layout
+									<!-- This page demonstrates the <a href="https://codepen.io/boejaker/pen/xzBwaP" style="color: #FFF">'Modern scroll'</a> website layout -->
 							</div>
 						</div>
 						
@@ -540,14 +541,15 @@ Cleanup:
 <script>
 	// GitHub username and API endpoint
 	const username = "boejaker";
-	const endpoint = `https://api.github.com/users/${username}/repos`;
+	const endpoint = `https://api.github.com/users/${username}/repos?per_page=100`;
   
     fetch(endpoint)
       .then(response => response.json())
       .then(data => {
         const tableBody = document.querySelector("#repoTable tbody");
         const reposWithSummary = data.filter(repo => {
-          return !repo.fork || repo.fork;
+			console.log(repo.name)
+          return true;
         });
 		reposWithSummary.forEach(repo => {
         const summaryUrl = `https://raw.githubusercontent.com/${username}/${repo.name}/master/.summary`;
@@ -564,7 +566,7 @@ Cleanup:
               const row = tableBody.insertRow();
               const nameCell = row.insertCell();
               const summaryCell = row.insertCell();
-              nameCell.innerHTML = `<a href="${readmeUrl}">${repo.name}</a>`;
+              nameCell.innerHTML = `<h3><a href="${readmeUrl}">${repo.name}</a></h3>`;
               summaryCell.innerHTML = summary;
             }
           })
