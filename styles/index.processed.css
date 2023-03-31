@@ -248,6 +248,10 @@ content #contact {
   background:rgba(255, 255, 255, 0.1);
   
 }
+.column li{
+  list-style-type: none;
+  /* text-align: left; */
+}
 @media screen and (max-width: 800px) {
   .column {
     padding-top: 2vh;
@@ -289,9 +293,10 @@ a { color: inherit; }
   }
   td {
     text-align: left;
+    padding-left: 20px;
   }
   td h3 a{
-    padding-left: 20px;
+    /* padding-left: 20px; */
   }
 }
 th, td {
@@ -330,4 +335,6 @@ div::-webkit-scrollbar {
   /* display: none; */
 }
 /* Hide scrollbar for IE, Edge and Firefox */
+
+
 
