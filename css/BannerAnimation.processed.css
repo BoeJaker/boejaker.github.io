@@ -9,7 +9,7 @@
   position: absolute;
   display: block;
   margin: 1.4vw auto;
-  right: 7vw;
+  right: 0vw;
   height: 40px;
   overflow: hidden;
   font-family: 'Catamaran', sans-serif;
@@ -21,13 +21,13 @@
 }
 
 .animation__container {
-  font-weight: 800;
+  /* font-weight: 800; */
   overflow: hidden;
   height: 40px;
-  width: 29vw;
+  width: 40vw;
 }
 
-.animation__container:before {
+/* .animation__container:before {
   content: '[';
   left: 0;
 }
@@ -35,7 +35,7 @@
 .animation__container:after {
   content: ']';
   right: 0;
-}
+} */
 
 .animation__container:after,
 .animation__container:before {
@@ -63,7 +63,7 @@
   position: absolute;
   margin-top: 0;
   padding: 0;
-  margin-left: 13vw;
+  /* margin-left: 13vw; */
   text-align: left;
   list-style: none;
   overflow: hidden;
