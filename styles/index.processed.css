@@ -233,6 +233,7 @@ content #contact {
   width: 100%;
   float:left;
   padding-left: 1vw;
+  z-index: 0;
 }
 .column {
   display: block;
@@ -244,6 +245,7 @@ content #contact {
   padding-left: 1vw;
   padding-right: 1vw;
   background:rgba(255, 255, 255, 0.1);
+  z-index: 0;
   
 }
 .column li{
