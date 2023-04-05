@@ -183,13 +183,13 @@ content #contact {
   text-shadow: 2px 2px #ff0000;
 }
 
-.animation{
+/* .animation{
   position: absolute!important;
   top:0!important;
   left: 10vw;
   /* width:30vw; */
   height:100%;
-}
+} */
 .animation__container{
   position: relative;
   /* top:2vh; */
