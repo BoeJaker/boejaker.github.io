@@ -58,7 +58,7 @@ $(window).scroll(function(){
 	}, 250));
 		};
 });
-$('.content').on('touchmove', function() {
+$('.page').on('touchmove', function() {
   if ($('.page').outerHeight() <= $(window).height()) {
     clearTimeout($.data(this, 'scrollTimer'));
     $.data(this, 'scrollTimer', setTimeout(function() {
