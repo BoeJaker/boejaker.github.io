@@ -46,7 +46,7 @@ $(document).ready(function() {
 
 
 $(window).scroll(function(){
-	if ($("page").outerHeight() <= $(window).height() ) {
+	if ($(".page").outerHeight() <= $(window).height() ) {
 	clearTimeout($.data(this, 'scrollTimer'));
 	$.data(this, 'scrollTimer', setTimeout(function() {
 		var individualDivHeight = $('.page').height();
