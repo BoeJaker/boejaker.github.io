@@ -5,7 +5,7 @@
   top: 30vh;
   right: 2vw;
   border-radius: 8px;
-  z-index: 499;
+  z-index: 500;
   transition: 0.5s cubic-bezier(0.77, 0, 0.175, 0.5);
   transform-origin: right;
 }
