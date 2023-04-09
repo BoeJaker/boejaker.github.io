@@ -99,7 +99,7 @@ content h1 {
 }
 
 content h2 {
-  padding-top: 1vh;
+  /* padding-top: 1vh; */
   /* padding-bottom: 1vh; */
   font-size: 4vh;
   text-transform: uppercase;
@@ -181,19 +181,6 @@ content #contact {
   top: 5vh;
 }
 
-/* .animation{
-  position: absolute!important;
-  top:0!important;
-  left: 10vw;
-  /* width:30vw; */
-  height:100%;
-} */
-.animation__container{
-  position: relative;
-  /* top:2vh; */
-  /* right:5px; */
-
-}
 #title{
   height: 10vw;
   align:left ;
@@ -224,8 +211,8 @@ content #contact {
 .span{
   width: 100%;
   padding-bottom: 2vh;
-  padding-left: 10%; 
-  padding-right: 10%;
+  padding-left: 15%; 
+  padding-right: 15%;
 }
 .colspan{
   overflow-y: scroll;
