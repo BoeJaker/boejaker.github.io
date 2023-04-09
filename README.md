@@ -27,7 +27,7 @@ Minimal use of libraries, use my own code wherever feasible.
 </br>  
 
 ## Development Workflow
-![software development workflow](SoftwareDevelopmentWorkflow.png)
+![software development workflow](assets/SoftwareDevelopmentWorkflow.png)
 
 </br>
 
