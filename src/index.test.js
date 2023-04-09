@@ -1,4 +1,4 @@
-import { fireEvent, getByText } from '@testing-library/dom'
+import { fireEvent, getByText, getByTestId } from '@testing-library/dom'
 import '@testing-library/jest-dom/extend-expect'
 import { JSDOM } from 'jsdom'
 import fs from 'fs'
@@ -19,34 +19,37 @@ describe('index.html', () => {
     container = dom.window.document.body
   })
 
-  it('renders a heading element', () => {
-    expect(container.querySelector('h2')).not.toBeNull()
-    // expect(getByText(container, 'Joseph')).toBeInTheDocument()
-  })
   it('contains a div with the id of welcome', () => {
     const welcomeDiv = container.querySelector('#welcome');
     expect(welcomeDiv).not.toBeNull();
   })
   it('contains a div with the id of about', () => {
-    const welcomeDiv = container.querySelector('#welcome');
+    const welcomeDiv = container.querySelector('#about');
     expect(welcomeDiv).not.toBeNull();
   })
   it('contains a div with the id of layouts', () => {
-    const welcomeDiv = container.querySelector('#welcome');
+    const welcomeDiv = container.querySelector('#layouts');
     expect(welcomeDiv).not.toBeNull();
   })
   it('contains a div with the id of elements', () => {
-    const welcomeDiv = container.querySelector('#welcome');
+    const welcomeDiv = container.querySelector('#elements');
     expect(welcomeDiv).not.toBeNull();
   })
   it('contains a div with the id of contact', () => {
-    const welcomeDiv = container.querySelector('#welcome');
+    const welcomeDiv = container.querySelector('#contact');
     expect(welcomeDiv).not.toBeNull();
   })
-  it('contains a div with the id of elements', () => {
+  it('renders the welcome banner', () => {
     const welcomeDiv = container.querySelector('#welcomebanner');
     expect(welcomeDiv).not.toBeNull();
   })
+  it('fills the screen', () => {
+    const content = container.querySelector('page');
+    const { width, height } = content.getBoundingClientRect();
+
+    expect(width).toBe(container.clientWidth);
+    expect(height).toBe(container.clientHeight);
+  });
   // it('renders a link element', () => {
   //   expect(getByText(container, 'tel:')).toHaveAttribute('href', 'tel:07761544030');
   // })

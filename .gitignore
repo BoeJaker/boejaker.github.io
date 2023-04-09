@@ -2,3 +2,8 @@
 secrets.json
 /secrets/*
 node_modules
+.well-known
+./google.*html
+.vscode
+yarn-error.log
+yarn.lock
