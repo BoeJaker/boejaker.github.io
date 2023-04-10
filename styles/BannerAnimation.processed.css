@@ -213,10 +213,10 @@ z-index: 5;
     left: 7%!important;
     top: 15.5%!important;
   }
-  .gradient{
+  /* .gradient{
     top: 7%;
     left: 15.5%;
-  }
+  } */
 }
 
 @media screen and (max-width: 600px) {
