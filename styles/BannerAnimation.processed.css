@@ -208,10 +208,14 @@ z-index: 5;
   }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 800px) {
   .animation {
     left: 7%!important;
     top: 15.5%!important;
+  }
+  .gradient{
+    top: 7%;
+    left: 15.5%;
   }
 }
 
