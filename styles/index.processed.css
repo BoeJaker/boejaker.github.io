@@ -35,7 +35,6 @@ content page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* padding: -20px; */
   padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
@@ -44,8 +43,7 @@ content page subdiv {
   height: 80vh;
   display: flex;
   flex-direction: column;
-  /* flex-grow: 0.5; */
-  padding-left: 10%;
+  padding-left: 7%;
   padding-top: 5vw;
 }
 
@@ -64,7 +62,6 @@ content page .table {
   z-index: 300;
   height: 100%; /* Sets the maximum height of the div to 66% of the viewport height */
   width: 100;
-  /* display: inline-flex; */
   overflow-y: scroll;
   overflow-x: hidden;
   padding-top: 2vh;
@@ -84,6 +81,32 @@ content page .table a {
 
 content page .table a:hover {
   background: rgba(200, 200, 200, 0.4);
+}
+
+
+@media screen and (max-width: 480px) {
+content page .table {
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+  }
+content page .table th, td {
+    display: block;
+    word-break: break-word; /* Add this line */
+  }
+content page .table th {
+    visibility: hidden;
+    height:0;
+  }
+content page .table td {
+    text-align: left;
+    padding-left: 20px;
+  }
+}
+content page .table th, td {
+  word-break: break-word; /* Add this line */
+  vertical-align: top;
+  padding: 10px;
 }
 
 content h1 {
@@ -178,7 +201,7 @@ content #contact {
 
 #welcomeContent{
   position: relative;
-  top: 5vh;
+  top: 5%;
 }
 
 #title{
@@ -196,18 +219,12 @@ content #contact {
   height: 5vh;
   width: 100%;
 }
-.banner{
-  width: 100%;
-  height: fit-content;
-  margin-left:1vh;
-  text-align: center;
-}
-.square{
+/* .square{
   height:100%;
   position: fixed;
   overflow: hidden;
   top:20%;
-}
+} */
 .span{
   width: 100%;
   padding-bottom: 2vh;
@@ -223,7 +240,7 @@ content #contact {
   padding-left: 1vw;
   z-index: 0;
 }
-.column {
+.colspan .column {
   display: block;
   float: left;
   flex-grow: 1;
@@ -236,12 +253,12 @@ content #contact {
   z-index: 0;
   
 }
-.column li{
+.colspan .column li{
   list-style-type: none;
   /* text-align: left; */
 }
 @media screen and (max-width: 800px) {
-  .column {
+  .colspan .column {
     padding-top: 2vh;
     padding-bottom: 2vh;
     padding-left: 3vw;
@@ -254,44 +271,35 @@ content #contact {
 
   }
 }
-iframe{
-  height: fit-content;
+
+.cv{
+  display: block;
+  margin: 0 auto;
+  width: 900px;
+  height:2000px;
+  /* overflow: auto; */
+  border:none;
+  /* padding-left: 10%; */
+
+}
+.iframe-container{
+  /* width: 100%; */
+  display:block;
+  width: 100%;
+  /* padding-left: 2vw; */
+
+}
+@media screen and (max-width: 800px) {
+
+  iframe {
+    visibility: hidden;
+    height: 0px;
+  }
 }
 
 a { color: inherit; } 
 
-@media screen and (max-width: 480px) {
-  table {
-    display: block;
-    overflow-x: auto;
-    width: 100%;
-  }
-  th, td {
-    display: block;
-    word-break: break-word; /* Add this line */
-  }
-  th {
-    visibility: hidden;
-    height:0;
-  }
-  td {
-    text-align: left;
-    padding-left: 20px;
-  }
-  td h3 a{
-    /* padding-left: 20px; */
-  }
-}
-th, td {
-  /* display: block; */
-  word-break: break-word; /* Add this line */
-  vertical-align: top;
-  padding: 10px;
-}
-td h3 a{
-  /* margin-left: -20px; */
-}
-
+/* ScrollBar ==============*/
 
 /* width */
 ::-webkit-scrollbar {
@@ -318,6 +326,8 @@ div::-webkit-scrollbar {
   /* display: none; */
 }
 
+/* ToolTip ==============*/
+
 /* Tooltip container */
 .tooltip {
   position: relative;
@@ -343,22 +353,4 @@ div::-webkit-scrollbar {
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
   visibility: visible;
-}
-
-.contact-header{
-  text-align: right;
-  padding-right: 10vw;
-  position:relative;
-  top:40px;
-  font-size: 20px;
-  letter-spacing: 0.2vw;
-
-}
-.contact-header b{
-  margin-left: 20px;
-  text-transform: uppercase;
-  letter-spacing: 0.4vw;
-}
-.contact-header a{
-  text-decoration: none;
 }
