@@ -30,6 +30,7 @@ content {
 }
 
 content page {
+  position: relative;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -39,12 +40,15 @@ content page {
 }
 
 content page subdiv {
-  width: 98vw;
+  position: absolute;
+  width: 100vw;
   height: 80vh;
   display: flex;
   flex-direction: column;
   padding-left: 7%;
-  padding-top: 5vw;
+  padding-top: 1%;
+  /* padding-top: 5vw; */
+  top:17%;
 }
 
 footer {
@@ -66,7 +70,6 @@ content page .table {
   overflow-x: hidden;
   padding-top: 2vh;
 }
-
 content page .table b {
   text-transform: uppercase;
   letter-spacing: 0.4vw;
@@ -200,23 +203,28 @@ content #contact {
 }
 
 #welcomeContent{
-  position: relative;
-  top: 5%;
+  top: 18%;
+  padding-bottom: 2%;
+}
+#welcomeContent .square{
+  top: 0!important;
 }
 
 #title{
+  
   height: 10vw;
   align:left ;
   position: absolute;
-  left:10vw;
+  left:7%;
   top:1%;
   text-align: left;
 }
 #title h2, hr{
-  font-size: 3vh;
+  font-size: 4vh;
+  line-height: 4vh;
 }
 #welcomebanner{
-  height: 5vh;
+  /* height: 5vh; */
   width: 100%;
 }
 /* .square{

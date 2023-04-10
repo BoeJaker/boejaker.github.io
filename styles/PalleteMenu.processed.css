@@ -2,7 +2,7 @@
 .pallete-nav {
   position: fixed;
   height: 200px;
-  top: 30vh;
+  top: 20%;
   right: 2vw;
   border-radius: 8px;
   z-index: 500;
