@@ -15,7 +15,7 @@ I post my work to multiple platforms, social media and blogs, this makes it hard
 A single webpage that aggregates all of my content and posts automatically.   
 List and summarize my most notable repos automatically with javascript API calls to github
 Interactive sections that run deployed code.
-A section that contains my contact details and a dynamic CV element that updates as i update the google doc
+A section that contains my contact details and a dynamic CV element that updates as I update the google doc
 
 With these features i will be able to keep posting to my other platforms as i was with all new content automatically displaying on the portfolio.
 
@@ -44,19 +44,34 @@ Minimal use of libraries, use my own code wherever feasible.
 
 ## Testing & Deployment
 
-### Unit Test
+### javaScript Unit Test
 Files / Folders:
 jest.config.js
 babel.config.js
 
-This website has unit test that have been designed for it.
-To run the unit tests pull the repository, then open a terminal in that directory and type the following:  
+This website has javaScript unit test that have been designed for it.
+To run the unit tests open a terminal in the base directory and type the following:  
 
     yarn install
 
     yarn test
 
-These test check that the website renders correctly and the javascript behaves as intended. It is designed as a pre pull/push check, ensuring you have not changed the layout accidentally whilst editing the source.
+These test check that the website renders correctly and the javaScript behaves as intended. It is designed as a pre pull/push check, ensuring you have not changed the layout accidentally whilst editing the source.
+
+</br>
+
+### Test Server
+Included is a local python server. to run the server, from the text/Server directory execute either of the following in a terminal:
+
+    python test_server.py
+
+or
+
+    docker build -t test_server -f ./test/Server/Dockerfile .
+
+    docker run -ti -p 8000:8000 test_server
+
+This will allow you to connect to the website on a local network - this can be useful for testing on mobile devices before pulling or pushing to git.
 
 </br>
 
@@ -67,12 +82,38 @@ dockerfile
 
 The deployment tests run as a scheduled docker container on a server. They check that my websites in production are operating as expected.
 
-    docker build website_test .
+From the test/Remote directory execute
 
-    docker run -ti website_test
-***
+    python website_test.py
+
+or
+
+    docker build website_test -f ./test/Remote/Dockerfile .
+
+    docker run -ti -p 80:80 website_test
+
+This will create a service that checks the website for error at a set cadence
+
 </br>  
 
+### Test Suite
+
+From the base directory execute the following in a terminal.
+
+    docker-compose build
+    docker-compose run
+    
+This will build both parts of the test suite mentioned above the local test server and a CI/CD tester.
+
+***
+</br>
+
 ## Conclusion
+
+***
+</br>
+
+## To Do
+Condense all tests into one containerized workflow that hosts the local server and also schedules CI/CD checks.
 
 
