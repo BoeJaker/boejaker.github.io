@@ -115,7 +115,7 @@ content page .table th, td {
 content h1 {
   padding-top: 1vh;
   padding-bottom: 1vh;
-  font-size: 7vh;
+  font-size: 70px;
   text-transform: uppercase;
   font-weight: 800;
   letter-spacing: 1vw;
@@ -127,7 +127,7 @@ content h1 {
 content h2 {
   /* padding-top: 1vh; */
   /* padding-bottom: 1vh; */
-  font-size: 4vh;
+  font-size: 30px;
   text-transform: uppercase;
   font-weight: 500;
   letter-spacing: 0.4vw;
@@ -292,13 +292,13 @@ content #contact {
 
 }
 @media screen and (max-width: 800px) {
-
-  iframe {
-    visibility: hidden;
-    height: 0px;
+  .cv, .iframe-container{
+    visibility: hiddenn;
+    height:0;
+    width:0;
   }
-}
 
+}
 a { color: inherit; } 
 
 /* ScrollBar ==============*/
@@ -355,4 +355,10 @@ div::-webkit-scrollbar {
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+.post-list a{
+  font-size: 30px;
+  text-transform: capitalize;
+  /* line-height: 50px; */
 }

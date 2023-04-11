@@ -9,8 +9,18 @@ WORKDIR /app
 COPY test/Remote/website_test.py /app
 COPY .env /app
 
+RUN apt update
+
+RUN apt install whois
+
+# Install pipreqs
+RUN pip install pipreqs
+
+# Generate requirements.txt file based on app.py
+RUN pipreqs /app
+
 # Install any needed packages specified in requirements.txt
-RUN pip install --trusted-host pypi.python.org beautifulsoup4 python-decouple pushbullet.py
+RUN pip install --no-cache-dir -r requirements.txt pushbullet.py
 
 # Make port 80 available to the world outside this container
 EXPOSE 80

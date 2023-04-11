@@ -73,6 +73,6 @@ $('.page').on('touchmove', function() {
   }
 });
 
-// document.getElementById('welcome_pallete').addEventListener('click', function() {
-//   location.href = '#welcome'
-// }, false);
+document.getElementById('welcome_pallete').addEventListener('click', function() {
+  location.href = '#welcome'
+}, false);

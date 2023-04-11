@@ -403,24 +403,34 @@ Cleanup:
 							In addition to showcasing my work and designs on this portfolio website, I also maintain several personal websites and platforms where I share my thoughts, opinions, and insights on various topics related to design and technology. </br> 
 							From write-ups about my latest design projects to opinion pieces on industry trends, these websites serve as a space where I can express my ideas and connect with others in the design community. </br> </br>
 							Through my articles and other content, I aim to share my knowledge and experience in the field of design while also learning from and engaging with others who share my passion. Whether you're looking for design inspiration, thought-provoking articles, or just want to connect with like-minded individuals, I hope you'll find something of value on my personal websites and platforms. </br> </br>
-							<!-- A comprehensive list of the platforms where I host and post content. </br> -->
-							Thank you for taking the time to read my portfolio. If it has interested you so far, maybe the content on one of my websites is down your street. </br> </br>
-						</div>
+							<!-- A comprehensive list of the platforms where I host and post content. </br> -->						</div>
 						<hr class="trans--growLeft hr3"></hr>
 						<div class="colspan">
-								<a href="http://boejaker.com" class="column" style="margin: 0 auto; width: 33%; float: left; ">
-										<b>Boejaker.com</b></br><hr class="trans--growLeft hr3"></hr>
-										A personal platform that showcases long-form writeups on a variety of topics, such as personal and profssional projects, code tutorials, and income-generation strategies.</br> 
+							<div class="column"  style="width: 33%; margin: 0 auto ; float: left ;">
+								<div>
+										<a href="http://boejaker.com"><b>Boejaker.com</b></br><div id="boejaker-status"></div><hr class="trans--growLeft hr3"></hr></a>
+										A personal platform that showcases long-form writeups on a variety of topics, such as personal and professional projects, code tutorials, and income-generation strategies.</br> 
 										The site provides readers with a glimpse into the author's experiences and expertise in these areas, and the articles are written in a detailed and informative style. </br> 
 										BoeJaker.com aims to inspire readers to explore new ideas and learn new skills by sharing personal stories and valuable insights. The platform is a great resource for individuals who are interested in coding and entrepreneurship. </br> 
-								</a>
-								<a href="http://maxhodl.com" class="column" style="width: 33%; margin: 0 auto; float: left ;">
-										<b>Maxhodl.com</b></br><hr class="trans--growLeft hr3"></hr>
+								</div>
+								</br>
+								<div id="boejaker-recent-posts" class="post-list" >
+									<b>Recent Articles</b></br><hr class="trans--growLeft hr3"></hr></br>
+								</div>
+							</div>
+							<div class="column" style="width: 33%; margin: 0 auto ; float: left ;">
+								<div>
+									    <a href="http://maxhodl.com"><b>Maxhodl.com</b></br><div id="maxhodl-status"></div><hr class="trans--growLeft hr3"></hr></a>
 										MaxHodl.com is a website that specializes in long-form writeups about subjects related to fintech and cryptocurrency. The site offers a plethora of in-depth articles covering various aspects of cryptocurrencies, blockchain technology, and financial innovation. </br>
 										The content on MaxHodl.com is geared towards readers who are looking for comprehensive and well-researched pieces on topics that are often complex and technical. </br>
-								</a>
+								</div>
+								<div id="maxhodl-recent-posts" class="post-list">
+									<b></b></br><hr class="trans--growLeft hr3"></hr></br>
+								</div>
+							</div>
+
 								<div class="column" style="width: 33%; margin: 0 auto ; float: left ;">
-										<b>Social Platforms</b> </br> <hr class="trans--growLeft hr3"></hr>
+										<b>Social Platforms</b> </br> </br> <hr class="trans--growLeft hr3"></hr>
 										<div class="span">You can find me on the following platforms</div>
 										<div class="colspan">
 											<div class="column" style="width: 50%; margin: 0 auto ; float: left ; background:rgba(255, 255, 255, 0);">
@@ -438,20 +448,12 @@ Cleanup:
 												<li><a>Keybase.io</a></li>
 											</div>
 										</div>
+										<div>
+											<b>Social Feed</b></br><hr class="trans--growLeft hr3"></hr></br>
+											<a>Social post placeholder</a></br>
+											<a>Social post placeholder</a>
+										</div>
 								</div>
-						</div>
-						<div class="colspan">
-							<div id="boejaker-recent-posts" class="column post-list" style="margin: 0 auto; width: 33%; float: left; ">
-								<b>Recent Articles</b></br><hr class="trans--growLeft hr3"></hr></br>
-							</div>
-							<div id="maxhodl-recent-posts" class="column" style="margin: 0 auto; width: 33%; float: left; ">
-								<b></b></br><hr class="trans--growLeft hr3"></hr></br>
-							</div>
-							<div class="column" style="margin: 0 auto; width: 33%; float: left; ">
-								<b>Social Feed</b></br><hr class="trans--growLeft hr3"></hr></br>
-								<a>Social post placeholder</a></br>
-								<a>Social post placeholder</a>
-							</div>
 						</div>
 						<hr class="trans--growRight hr3"></hr>
 						<!-- <div class="span" style="float:left ; width: 80vw ; margin: 10px auto;">
@@ -591,49 +593,79 @@ Cleanup:
       .catch(error => console.error(error));
 	  
   </script>
-  <script>
-  // Replace YOUR_WORDPRESS_SITE_URL with the URL of your WordPress site
-const urlA = 'https://boejaker.com/wp-json/wp/v2/posts?per_page=5';
-const urlB = 'https://maxhodl.com/wp-json/wp/v2/posts?per_page=5';
-fetch(urlA)
-  .then(response => response.json())
-  .then(posts => {
-    // Replace "recent-posts" with the ID or class of the element where you want to display the posts
-    const recentPostsContainer = document.getElementById("boejaker-recent-posts");
+	<script>
+		// Replace YOUR_WORDPRESS_SITE_URL with the URL of your WordPress site
+		const urlA = 'https://boejaker.com/wp-json/wp/v2/posts?per_page=5';
+		const urlB = 'https://maxhodl.com/wp-json/wp/v2/posts?per_page=5';
+		fetch(urlA)
+			.then(response => response.json())
+			.then(posts => {
+				// Replace "recent-posts" with the ID or class of the element where you want to display the posts
+				const recentPostsContainer = document.getElementById("boejaker-recent-posts");
 
-    // Loop through the posts and create HTML elements to display them
-    posts.forEach(post => {
-      const postLink = document.createElement("a");
-      postLink.href = post.link;
-      postLink.textContent = post.title.rendered;
+				// Loop through the posts and create HTML elements to display them
+				posts.forEach(post => {
+					const postLink = document.createElement("a");
+					postLink.href = post.link;
+					postLink.textContent = post.title.rendered;
 
-      const listItem = document.createElement("li");
-      listItem.appendChild(postLink);
+					const postSummary = document.createElement("p");
+					postSummary.textContent = post.excerpt.rendered;
 
-      recentPostsContainer.appendChild(listItem);
-    });
-  })
-  .catch(error => console.error(error));
-fetch(urlB)
-  .then(response => response.json())
-  .then(posts => {
-    // Replace "recent-posts" with the ID or class of the element where you want to display the posts
-    const recentPostsContainer = document.getElementById("maxhodl-recent-posts");
+					const listItem = document.createElement("li");
+					listItem.appendChild(postLink);
+					listItem.appendChild(postSummary);
 
-    // Loop through the posts and create HTML elements to display them
-    posts.forEach(post => {
-      const postLink = document.createElement("a");
-      postLink.href = post.link;
-      postLink.textContent = post.title.rendered;
+					recentPostsContainer.appendChild(listItem);
+				});
+			})
+		.catch(error => console.error(error));
+		fetch(urlB)
+			.then(response => response.json())
+			.then(posts => {
+				// Replace "recent-posts" with the ID or class of the element where you want to display the posts
+				const recentPostsContainer = document.getElementById("boejaker-recent-posts");
 
-      const listItem = document.createElement("li");
-      listItem.appendChild(postLink);
+				// Loop through the posts and create HTML elements to display them
+				posts.forEach(post => {
+					const postLink = document.createElement("a");
+					postLink.href = post.link;
+					postLink.textContent = post.title.rendered;
 
-      recentPostsContainer.appendChild(listItem);
-    });
-  })
-  .catch(error => console.error(error));
-  </script>
+					const postSummary = document.createElement("p");
+					postSummary.textContent = post.excerpt.rendered;
+
+					const listItem = document.createElement("li");
+					listItem.appendChild(postLink);
+					listItem.appendChild(postSummary);
+
+					recentPostsContainer.appendChild(listItem);
+				});
+			})
+		.catch(error => console.error(error));
+	</script>
+	<script>
+		function is_wp_up(siteUrl, statusElementId) {
+			const postsEndpoint = '/wp-json/wp/v2/posts';
+			// Make a GET request to the WordPress REST API to retrieve the latest posts
+			fetch(`${siteUrl}${postsEndpoint}`)
+				.then(response => {
+					if (response.ok) {
+						// If the response is successful, update the status element to show a green tick
+						document.getElementById(statusElementId).innerHTML = `<span style="color:green;">&#10004; Online</span> `;
+					} else {
+						// If the response is not successful, update the status element to show a red cross
+						document.getElementById(statusElementId).innerHTML = `<span style="color:red;">&#10060; Offline</span>`;
+					}
+				})
+				.catch(error => {
+					// If there is an error, update the status element to show a red cross
+					document.getElementById(statusElementId).innerHTML = `<span style="color:red;">&#10060; Offline</span>`;
+				});
+		}
+		is_wp_up("https://maxhodl.com", "maxhodl-status");
+		is_wp_up("https://boejaker.com", "boejaker-status");
+	</script>
 </body>
 
 </html>

@@ -17,34 +17,49 @@ from bs4 import BeautifulSoup
 
 import re
 
+import datetime
+
 from decouple import config
+
+import whois
+
+import time
 
 from pushbullet import Pushbullet
 
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 pb = Pushbullet(config('pb_api'))
 
-report = ""
+push = True
 
-pass_count=0
-fail_count=0
 class test():
+
+    def __init__(self, url):
+        self.url = url
+        self.pass_count=0
+        self.fail_count=0
+
+        self.total=lambda fail_c, pass_c: fail_c+pass_c
+        self.report = ""
+
     def echo(self, status, output):
-        global report
-        global pass_count
-        global fail_count
         if status is True:
             print(f"\033[32m\u2714 {output} \033[0m")
-            pass_count+=1
+            self.pass_count+=1
         if status is False:
             print(f"\033[91m\u2717 {output} \033[0m")
-            report += str(output)+"\n"
-            fail_count+=1
+            self.report += str(output)+"\n"
+            self.fail_count+=1
         
 
-    def find_contacts(self, url):
-        print("Checking contact details @ "+url)
+    def find_contacts(self):
+        print("Checking contact details @ "+self.url)
         status = True
-        response = requests.get(url)
+        response = requests.get(self.url)
         soup = BeautifulSoup(response.content, 'html.parser')
         
         # Find all phone numbers on the page
@@ -77,54 +92,64 @@ class test():
         else:
             errors=["Contact details correct"]
 
-
+        self.echo(status,errors)
         return status, errors
 
-    def send_report(self, url, report):
-        push = pb.push_note(url+" Alert", report)    
+    def send_report(self, report):
+        push = pb.push_note(self.url+" Alert", report)    
 
-    def read_status(self, url):
+    def read_status(self):
         """
         Reads the uptime file of a website
         """
         status = False
-        output=url+" domain is inactive"
-        response = requests.get(url)
+        output=self.url+" domain is inactive"
+        response = requests.get(self.url)
         soup = BeautifulSoup(response.content, 'html.parser')
             
         if soup.find(id='ActiveDomain'):
             status = True
-            output=url_+" domain is active"
+            output=self.url_+" domain is active"
         
         # If no keywords are found, assume it's not a parked domain
+        self.echo(status, output)
         return status, output
     
-    def check_website(self, url):
-        print("Checking @ "+url+" is online")
+    def check_website(self):
+        print("Checking @ "+self.url+" is online")
         """
         Checks the webpage loads
         """
         status = False
         try:
-            response = requests.get(url, timeout=10)
+            start_time = time.time()
+            response = requests.get(self.url)
+            end_time = time.time()
+
+            # Calculate the load time in seconds
+            load_time = end_time - start_time
+
+            # Print the load time in seconds
+            print("Load time for", self.url, ":", load_time, "seconds")
+
             response.raise_for_status()
-            output = url+" is up and running with status code "+str(response.status_code)
+            output = self.url+" is up and running with status code "+str(response.status_code)
             status = True
         except requests.HTTPError as http_error:
-            output = url+" is offline with HTTP error: "+str(http_error)
+            output = self.url+" is offline with HTTP error: "+str(http_error)
         except requests.ConnectionError as connection_error:
-            output = url+" is offline with connection error:  "+str(connection_error)
+            output = self.url+" is offline with connection error:  "+str(connection_error)
         except requests.Timeout as timeout_error:
-            output = url+" is offline with timeout error:  "+str(timeout_error)
+            output = self.url+" is offline with timeout error:  "+str(timeout_error)
         except requests.RequestException as request_exception:
-            output = url+" is offline with unknown exception:  "+str(request_exception)
+            output = self.url+" is offline with unknown exception:  "+str(request_exception)
 
         return status, output
 
-    def check_links(self, url):
-        print("Checking links @ "+url)
+    def check_links(self):
+        print("Checking links @ "+self.url)
         # Get the website's HTML content
-        response = requests.get(url)
+        response = requests.get(self.url)
         soup = BeautifulSoup(response.text, "html.parser")
 
         # Find all links on the page
@@ -149,7 +174,7 @@ class test():
                     except requests.exceptions.HTTPError:
                         self.echo(False, "Link "+href+" is broken. ")
         
-        print("Checking script links @ "+url)
+        print("Checking script links @ "+self.url)
         script_urls=[]
         for script in soup.find_all('script'):
             script_text = script.string
@@ -177,11 +202,35 @@ class test():
                     except:
                         pass
 
-    def check_source(self):
-        """
-        Checks the loaded page matches the source
-        """
-        pass
+
+    def check_domain(self):
+        # Get WHOIS information for the domain
+        w = whois.query(self.url)
+
+        # Get the expiration date of the domain
+        expiration_date = w.expiration_date
+        nameServers = w.name_servers
+
+        for x in ["expire","expiration"]:
+            for y in nameServers:
+                print(y)
+                if x in y:
+                    self.echo(False, "The domain "+self.url+" has already expired!")
+                    return
+        
+
+        # Calculate the number of days until the domain expires
+        days_until_expiration = (expiration_date - datetime.datetime.now()).days
+
+        # Check if the domain is expired or expiring soon
+        if days_until_expiration < 0:
+            self.echo(False, "The domain "+self.url+" has already expired!")
+        elif days_until_expiration < 60:
+            self.echo(False, "The domain "+self.url+" is expiring soon! It will expire in "+str(days_until_expiration)+" days.")
+        else:
+            self.echo(True, "The domain "+self.url+" is not expiring soon. It will expire in "+str(days_until_expiration)+" days.")
+
+
 
 if __name__ == "__main__":
 
@@ -191,30 +240,22 @@ if __name__ == "__main__":
     
     for u in urls:
 
-        t=test()
+        t=test(u)
 
-        pass_count=0
-        fail_count=0
-
-        total=lambda fail_c, pass_c: fail_c+pass_c
-        report = ""
         print(f"Analyzing website {u}")
 
-        # status, output = t.read_status(u)
-        # t.echo(status, output)
+        t.check_website()
+        t.read_status()
+        t.check_domain()
+        t.check_links()
+        t.find_contacts()
 
-        t.check_links(u)
-
-        status, output = t.find_contacts(u)
-        t.echo(status, output)
-
-        if report:
-            # pass
-            t.send_report(u,report)
+        if t.report and push:
+            t.send_report(t.report)
         else:
-            # pass
-            t.send_report(u,"Operational")
-        total=total(fail_count, pass_count)
-        print(f"pass {pass_count}/{total} failed{fail_count}/{total}")
+            t.send_report("Operational")
+
+        total=t.total(t.fail_count, t.pass_count)
+        print(f"pass {t.pass_count}/{total} failed{t.fail_count}/{total}")
 
 

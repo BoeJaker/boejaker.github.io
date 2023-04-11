@@ -1,11 +1,13 @@
 version: '1.0.0'
-
-website_test:
-  build:
-    context: ./
-    dockerfile: ./test/Remote/dockerfile
-    
-website_server:
-  build:
-    context: ./
-    dockerfile: ./test/Server/dockerfile
+services:
+  website_test:
+    container_name: website_test
+    build:
+      context: ./
+      dockerfile: ./test/Remote/dockerfile
+      
+  website_server:
+    container_name: website_server
+    build:
+      context: ./
+      dockerfile: ./test/Server/dockerfile
