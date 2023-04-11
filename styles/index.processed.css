@@ -125,7 +125,7 @@ content h1 {
 }
 
 content h2 {
-  /* padding-top: 1vh; */
+  padding-top: 1vh;
   /* padding-bottom: 1vh; */
   font-size: 30px;
   text-transform: uppercase;
