@@ -197,12 +197,12 @@ Cleanup:
 					
 
 						<div style="float:left;height:1vw"></div>
-
+						<span class="l1"></span>
+						<span class="l2"></span>
+						<span class="l3"></span>
+						<span class="l4"></span>
 				</div>
-				<span class="l1"></span>
-				<span class="l2"></span>
-				<span class="l3"></span>
-				<span class="l4"></span>
+				
 			</div>
 
 		</subdiv>
@@ -280,12 +280,11 @@ Cleanup:
 						</div>
 
 						<div style="float:left;height:1vw"></div>
-
-				</div>
-				<span class="l1"></span>
-				<span class="l2"></span>
-				<span class="l3"></span>
-				<span class="l4"></span>
+						<span class="l1"></span>
+						<span class="l2"></span>
+						<span class="l3"></span>
+						<span class="l4"></span>
+					</div>
 			</div>
 
 		</subdiv>
@@ -374,11 +373,12 @@ Cleanup:
 
 					<div style="float:left;height:1vw"></div>
 
+					<span class="l1"></span>
+					<span class="l2"></span>
+					<span class="l3"></span>
+					<span class="l4"></span>
 				</div>
-				<span class="l1"></span>
-				<span class="l2"></span>
-				<span class="l3"></span>
-				<span class="l4"></span>
+				
 			</div>
 
 		</subdiv>
@@ -464,12 +464,12 @@ Cleanup:
 						</div> -->
 						<div style="float:left;height:1vw"></div>
 
+						<span class="l1"></span>
+						<span class="l2"></span>
+						<span class="l3"></span>
+						<span class="l4"></span>
 				</div>
-				<span class="l1"></span>
-				<span class="l2"></span>
-				<span class="l3"></span>
-				<span class="l4"></span>
-
+				
 			</div>
 
 		</subdiv>
@@ -597,6 +597,13 @@ Cleanup:
 	  
   </script>
 	<script>
+		function decodeHtml(html) {
+			var txt = document.createElement("textarea");
+			txt.innerHTML = html.replace(/&#(\d+);/g, function(match, dec) {
+				return String.fromCharCode(dec);
+			});
+			return txt.value;
+			}
 		// Replace YOUR_WORDPRESS_SITE_URL with the URL of your WordPress site
 		const urlA = 'https://boejaker.com/wp-json/wp/v2/posts?per_page=5';
 		const urlB = 'https://maxhodl.com/wp-json/wp/v2/posts?per_page=5';
@@ -610,14 +617,14 @@ Cleanup:
 				posts.forEach(post => {
 				const postLink = document.createElement("a");
 				postLink.href = post.link;
-				postLink.textContent = post.title.rendered;
+				postLink.textContent = decodeHtml(post.title.rendered);
 
 				const postImage = document.createElement("img");
 				postImage.src = post.featured_media.source_url;
 				postImage.alt = post.title.rendered;
 
 				const postSummary = document.createElement("p");
-				postSummary.textContent = post.excerpt.rendered
+				postSummary.textContent = decodeHtml(post.excerpt.rendered)
 					.replace(/<\/?[^>]+(>|$)/g, '')
 					.replace('[&hellip;]', '. . .');
 
@@ -640,14 +647,14 @@ Cleanup:
 				posts.forEach(post => {
 				const postLink = document.createElement("a");
 				postLink.href = post.link;
-				postLink.textContent = post.title.rendered;
+				postLink.textContent = decodeHtml(post.title.rendered);
 
 				const postImage = document.createElement("img");
 				postImage.src = post.featured_media.source_url;
 				postImage.alt = post.title.rendered;
 
 				const postSummary = document.createElement("p");
-				postSummary.textContent = post.excerpt.rendered
+				postSummary.textContent = decodeHtml(post.excerpt.rendered)
 					.replace(/<\/?[^>]+(>|$)/g, '')
 					.replace('[&hellip;]', '. . .');
 
