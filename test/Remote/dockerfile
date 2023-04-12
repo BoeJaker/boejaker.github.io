@@ -1,29 +1,34 @@
 # Use an official Python runtime as a parent image
-FROM python:3.9-slim
+FROM python:3.9.7-slim@sha256:08153b5d3822b264440b42aefa137c05d6f423c3c489c34bbd49658cafdbd3c9 as build_stage
 
 # Set the working directory to /app
 WORKDIR /app
 
 # Copy the current directory contents into the container at /app
-# COPY . /app
 COPY test/Remote/website_test.py /app
-COPY .env /app
-
-RUN apt update
-
-RUN apt install whois
 
 # Install pipreqs
-RUN pip install pipreqs
+RUN pip install --no-cache pipreqs
 
 # Generate requirements.txt file based on app.py
-RUN pipreqs /app
+RUN pipreqs /app/website_test.py
 
 # Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt pushbullet.py
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Make port 80 available to the world outside this container
-EXPOSE 80
+# Cleanup after ourselves
+RUN pip uninstall pipreqs
+RUN pip cache purge
+
+# FROM python:3.9.7-slim@sha256:08153b5d3822b264440b42aefa137c05d6f423c3c489c34bbd49658cafdbd3c9 as run_stage
+
+# Create a new user with a specific user ID
+RUN useradd --uid 1001 app_admin
+
+# Switch to the new user
+USER app_admin
+
+COPY . /app
 
 # Run app.py when the container launches
-CMD ["python","website_test.py"]
+CMD ["python","app/test/Remote/website_test.py"]

@@ -38,12 +38,15 @@ push = True
 
 class test():
 
-    def __init__(self, url):
+    def __init__(self, url, name_servers):
+
         self.url = url
+        self.name_servers = name_servers
+
         self.pass_count=0
         self.fail_count=0
-
         self.total=lambda fail_c, pass_c: fail_c+pass_c
+
         self.report = ""
 
     def echo(self, status, output):
@@ -218,6 +221,13 @@ class test():
                     self.echo(False, "The domain "+self.url+" has already expired!")
                     return
         
+        for x in self.name_servers:
+            for y in nameServers:
+                print(y)
+                if x in y:
+                    self.echo(True, "The domain "+self.url+" is using nameserver"+y)
+                    return
+                self.echo(False, "The domain "+self.url+" has an incorrect nameserver"+y)
 
         # Calculate the number of days until the domain expires
         days_until_expiration = (expiration_date - datetime.datetime.now()).days
@@ -234,13 +244,13 @@ class test():
 
 if __name__ == "__main__":
 
-    urls = ["http://www.boejaker.com","http://www.maxhodl.com","http://boejaker.github.io"]
+    urls = [["http://www.boejaker.com",["ns1.dns-parking.com","ns2.dns-parking.com"]],["http://www.maxhodl.com",["ns1.dns-parking.com","ns2.dns-parking.com"]],["http://boejaker.github.io",[]]]
 
     print(f"Testing {len(urls)} urls, {urls}")
     
-    for u in urls:
-
-        t=test(u)
+    for u, name_servers in urls:
+        # print(u,name_servers)
+        t=test(u, name_servers)
 
         print(f"Analyzing website {u}")
 

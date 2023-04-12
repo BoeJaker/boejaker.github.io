@@ -7,7 +7,7 @@
 		<meta charset="UTF-8" />
 		<title>Boe Jaker IO</title>
 
-		<link rel="manifest" href="manifest.json">
+		<!-- <link rel="manifest" href="manifest.json"> -->
 
 		<meta name="mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -25,6 +25,7 @@
 		<link rel="stylesheet" href="styles/PalleteMenu.processed.css">
 		<link rel="stylesheet" href="styles/SocialButtons.processed.css">
 		<link rel="stylesheet" href="styles/BannerAnimation.processed.css">
+		<script src="https://unpkg.com/scrollsnap-polyfill"></script>
 <style>
 	div {
 	/*     margin-top: 25px;
@@ -424,8 +425,9 @@ Cleanup:
 										MaxHodl.com is a website that specializes in long-form writeups about subjects related to fintech and cryptocurrency. The site offers a plethora of in-depth articles covering various aspects of cryptocurrencies, blockchain technology, and financial innovation. </br></br> 
 										The content on MaxHodl.com is geared towards readers who are looking for comprehensive and well-researched pieces on topics that are often complex and technical. </br>
 								</div>
+								</br>
 								<div id="maxhodl-recent-posts" class="post-list">
-									<b></b></br><hr class="trans--growLeft hr3"></hr></br>
+									<b>Recent Articles</b></br><hr class="trans--growLeft hr3"></hr></br>
 								</div>
 							</div>
 
@@ -448,6 +450,7 @@ Cleanup:
 												<li><a>Keybase.io</a></li>
 											</div>
 										</div>
+										</br>
 										<div>
 											<b>Social Feed</b></br><hr class="trans--growLeft hr3"></hr></br>
 											<a>Social post placeholder</a></br>
@@ -605,18 +608,25 @@ Cleanup:
 
 				// Loop through the posts and create HTML elements to display them
 				posts.forEach(post => {
-					const postLink = document.createElement("a");
-					postLink.href = post.link;
-					postLink.textContent = post.title.rendered;
+				const postLink = document.createElement("a");
+				postLink.href = post.link;
+				postLink.textContent = post.title.rendered;
 
-					const postSummary = document.createElement("p");
-					postSummary.textContent = post.excerpt.rendered;
+				const postImage = document.createElement("img");
+				postImage.src = post.featured_media.source_url;
+				postImage.alt = post.title.rendered;
 
-					const listItem = document.createElement("li");
-					listItem.appendChild(postLink);
-					listItem.appendChild(postSummary);
+				const postSummary = document.createElement("p");
+				postSummary.textContent = post.excerpt.rendered
+					.replace(/<\/?[^>]+(>|$)/g, '')
+					.replace('[&hellip;]', '. . .');
 
-					recentPostsContainer.appendChild(listItem);
+				const listItem = document.createElement("li");
+				// listItem.appendChild(postImage);
+				listItem.appendChild(postLink);
+				listItem.appendChild(postSummary);
+
+				recentPostsContainer.appendChild(listItem);
 				});
 			})
 		.catch(error => console.error(error));
@@ -624,22 +634,29 @@ Cleanup:
 			.then(response => response.json())
 			.then(posts => {
 				// Replace "recent-posts" with the ID or class of the element where you want to display the posts
-				const recentPostsContainer = document.getElementById("boejaker-recent-posts");
+				const recentPostsContainer = document.getElementById("maxhodl-recent-posts");
 
 				// Loop through the posts and create HTML elements to display them
 				posts.forEach(post => {
-					const postLink = document.createElement("a");
-					postLink.href = post.link;
-					postLink.textContent = post.title.rendered;
+				const postLink = document.createElement("a");
+				postLink.href = post.link;
+				postLink.textContent = post.title.rendered;
 
-					const postSummary = document.createElement("p");
-					postSummary.textContent = post.excerpt.rendered;
+				const postImage = document.createElement("img");
+				postImage.src = post.featured_media.source_url;
+				postImage.alt = post.title.rendered;
 
-					const listItem = document.createElement("li");
-					listItem.appendChild(postLink);
-					listItem.appendChild(postSummary);
+				const postSummary = document.createElement("p");
+				postSummary.textContent = post.excerpt.rendered
+					.replace(/<\/?[^>]+(>|$)/g, '')
+					.replace('[&hellip;]', '. . .');
 
-					recentPostsContainer.appendChild(listItem);
+				const listItem = document.createElement("li");
+				// listItem.appendChild(postImage);
+				listItem.appendChild(postLink);
+				listItem.appendChild(postSummary);
+
+				recentPostsContainer.appendChild(listItem);
 				});
 			})
 		.catch(error => console.error(error));
