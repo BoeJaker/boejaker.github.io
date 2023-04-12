@@ -126,7 +126,7 @@ class test():
         status = False
         try:
             start_time = time.time()
-            response = requests.get(self.url)
+            response = requests.get(self.url, verify = False)
             end_time = time.time()
 
             # Calculate the load time in seconds
@@ -225,9 +225,9 @@ class test():
             for y in nameServers:
                 print(y)
                 if x in y:
-                    self.echo(True, "The domain "+self.url+" is using nameserver"+y)
-                    return
-                self.echo(False, "The domain "+self.url+" has an incorrect nameserver"+y)
+                    self.echo(True, "The domain "+self.url+" is using nameserver "+y)
+                    return    
+            self.echo(False, "The domain "+self.url+" has an incorrect nameserver "+y)
 
         # Calculate the number of days until the domain expires
         days_until_expiration = (expiration_date - datetime.datetime.now()).days
@@ -244,7 +244,7 @@ class test():
 
 if __name__ == "__main__":
 
-    urls = [["http://www.boejaker.com",["ns1.dns-parking.com","ns2.dns-parking.com"]],["http://www.maxhodl.com",["ns1.dns-parking.com","ns2.dns-parking.com"]],["http://boejaker.github.io",[]]]
+    urls = [["http://www.boejaker.com",["abbey.ns.cloudflare.com","brad.ns.cloudflare.com"]],["http://www.maxhodl.com",["ns1.dns-parking.com","ns2.dns-parking.com"]],["http://boejaker.github.io",[]]]
 
     print(f"Testing {len(urls)} urls, {urls}")
     
