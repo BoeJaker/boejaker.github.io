@@ -7,8 +7,9 @@
   visibility: hidden;
   display: flex;
   flex-direction: column;
-  flex-grow:0.5;
+  flex-grow:1;
 }
+
 
 .square .l1,
 .square .l2,
@@ -23,7 +24,7 @@
   height: 0px;
   /*give each border a background color of black in css so that you don't need to animate it*/
   background-color: rgba(240, 240, 240, 0.4);
-  z-index: 499;
+
 }
 
 .square .l1 {
@@ -89,4 +90,5 @@
 
 .grow {
   width: 100%;
+  /* flex-grow: 1; */
 }
