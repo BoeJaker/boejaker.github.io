@@ -12,10 +12,13 @@ Usage:
 """
 
 import requests
-
-from bs4 import BeautifulSoup
+from requests.exceptions import SSLError
 
 import re
+
+import inspect
+
+import time
 
 import datetime
 
@@ -23,31 +26,37 @@ from decouple import config
 
 import whois
 
-import time
-
 from pushbullet import Pushbullet
+
+from bs4 import BeautifulSoup
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-pb = Pushbullet(config('pb_api'))
+pb = Pushbullet(config('pb_api')) # Import API key from .env file using decouple.
 
-push = True
+push = True # A switch that turns on/off pushing notifications, mainly for debugging.
 
 class test():
 
-    def __init__(self, url, name_servers):
+    def __init__(self, url, name_servers, email, phone_numbers):
 
-        self.url = url
-        self.name_servers = name_servers
+        self.url = url # This is the URL that the test is being run on
+        self.name_servers = name_servers # The expected nameservers
+        self.emails = emails
+        self.phone_numbers = phone_numbers
+        
+        # Test counters
+        self.pass_count = 0
+        self.fail_count = 0
+        self.total=lambda: self.pass_count+self.fail_count
 
-        self.pass_count=0
-        self.fail_count=0
-        self.total=lambda fail_c, pass_c: fail_c+pass_c
+        self.load_time = {} # An array of all the load times associated with this url - indexed by the url
 
-        self.report = ""
+        self.errors ="" #
+        self.report = "" #
 
     def echo(self, status, output):
         if status is True:
@@ -57,36 +66,79 @@ class test():
             print(f"\033[91m\u2717 {output} \033[0m")
             self.report += str(output)+"\n"
             self.fail_count+=1
+
+    def process_status_code(self, url, status_code):
+        if status_code == 200:
+            # self.echo(True, "Link "+url+" is working. Status Code "+str(status_code))
+            pass
+        elif status_code == 403:
+            self.echo(False, "403 Forbidden error for "+url)
+        else:
+            self.echo(False, "Unexpected status code "+str(status_code)+" for "+url)
+    
+    def request_handler(self, url):
+        self.errors=""
+        status = False # Start in an "error" state to catch everything unhandled
+        try:
+            # print(inspect.stack()[1][3])
+            start_time = time.time()
+            response = requests.get(url)
+            end_time = time.time()
+
+            # Calculate the load time in seconds
+            self.load_time[url] = end_time - start_time
+
+            response.raise_for_status()
+            self.errors = url+" is up and running with status code "+str(response.status_code)
+            status = True
         
+        except SSLError as ssl_error:
+            self.errors = url+" has an SSL certificate Error:  "+str(ssl_error)
+        except requests.HTTPError as http_error:
+            self.errors = url+" is offline with HTTP error: "+str(http_error)
+        except requests.ConnectionError as connection_error:
+            self.errors = url+" is offline with connection error:  "+str(connection_error)
+        except requests.Timeout as timeout_error:
+            self.errors = url+" is offline with timeout error:  "+str(timeout_error)
+        except requests.RequestException as request_exception:
+            self.errors = url+" is offline with unknown exception:  "+str(request_exception)
+        except Exception as error:
+             self.errors = url+" has an Unknown Error:  "+str(error)
+
+        if self.errors:
+            self.echo(status, self.errors)
+
+        try:
+            return(response, response.status_code, status)    
+        except:
+            return("Unknown error"+url, 0, False)    
+
 
     def find_contacts(self):
         print("Checking contact details @ "+self.url)
-        status = True
-        response = requests.get(self.url)
+        response, status_code, status = self.request_handler(self.url)
         soup = BeautifulSoup(response.content, 'html.parser')
-        
-        # Find all phone numbers on the page
-        phone_pattern = re.compile(r'\b\d{4}[-.]?\d{3}[-.]?\d{4}\b')
-        phone_numbers = []
-        for match in phone_pattern.findall(soup.get_text()):
-            phone_numbers.append(match)
-        
-        # Find all email addresses on the page
-        email_pattern = re.compile(r'\b[\w.-]+@[\w.-]+\.\w{2,}\b')
-        email_addresses = []
-        for match in email_pattern.findall(soup.get_text()):
-            email_addresses.append(match)
-    
         errors= []
-        correct_number="07761544030"
-        if phone_numbers:
-            [errors.append(number) for number in phone_numbers if number != correct_number]
+        if self.phone_numbers:
+            # Find all phone numbers on the page
+            phone_pattern = re.compile(r'\b\d{4}[-.]?\d{3}[-.]?\d{4}\b')
+            phone_numbers = []
+            for match in phone_pattern.findall(soup.get_text()):
+                phone_numbers.append(match)
+        
+            [errors.append(number) for number in phone_numbers if number not in self.phone_numbers]
         else:
             errors.append("No phone numbers found")
         
-        correct_email="jb.enquiries@proton.me"
-        if email_addresses:
-            [errors.append(email) for email in email_addresses if email != correct_email]
+            
+        if self.emails:
+            # Find all email addresses on the page
+            email_pattern = re.compile(r'\b[\w.-]+@[\w.-]+\.\w{2,}\b')
+            email_addresses = []
+            for match in email_pattern.findall(soup.get_text()):
+                email_addresses.append(match)
+
+            [errors.append(email) for email in email_addresses if email not in self.emails]
         else:
             errors.append("No email addresses found")
         
@@ -96,63 +148,29 @@ class test():
             errors=["Contact details correct"]
 
         self.echo(status,errors)
-        return status, errors
+        # return status, errors
 
-    def send_report(self, report):
-        push = pb.push_note(self.url+" Alert", report)    
-
-    def read_status(self):
-        """
-        Reads the uptime file of a website
-        """
-        status = False
-        output=self.url+" domain is inactive"
-        response = requests.get(self.url)
-        soup = BeautifulSoup(response.content, 'html.parser')
+    def send_report(self):
+        if t.report and push:
+            pb.push_note(self.url+" Alert", self.report)
+        else:
+            pb.push_note("Operational")
             
-        if soup.find(id='ActiveDomain'):
-            status = True
-            output=self.url_+" domain is active"
-        
-        # If no keywords are found, assume it's not a parked domain
-        self.echo(status, output)
-        return status, output
     
     def check_website(self):
-        print("Checking @ "+self.url+" is online")
         """
         Checks the webpage loads
         """
-        status = False
-        try:
-            start_time = time.time()
-            response = requests.get(self.url, verify = False)
-            end_time = time.time()
-
-            # Calculate the load time in seconds
-            load_time = end_time - start_time
-
-            # Print the load time in seconds
-            print("Load time for", self.url, ":", load_time, "seconds")
-
-            response.raise_for_status()
-            output = self.url+" is up and running with status code "+str(response.status_code)
-            status = True
-        except requests.HTTPError as http_error:
-            output = self.url+" is offline with HTTP error: "+str(http_error)
-        except requests.ConnectionError as connection_error:
-            output = self.url+" is offline with connection error:  "+str(connection_error)
-        except requests.Timeout as timeout_error:
-            output = self.url+" is offline with timeout error:  "+str(timeout_error)
-        except requests.RequestException as request_exception:
-            output = self.url+" is offline with unknown exception:  "+str(request_exception)
-
-        return status, output
+        response, status_code, status = self.request_handler(self.url)   
+        self.echo(status, self.errors)
+         # Print the load time in seconds
+        print("Load time for", self.url, ":",self.load_time[self.url], "seconds")
+ 
 
     def check_links(self):
         print("Checking links @ "+self.url)
         # Get the website's HTML content
-        response = requests.get(self.url)
+        response, status_code, status = self.request_handler(self.url)
         soup = BeautifulSoup(response.text, "html.parser")
 
         # Find all links on the page
@@ -164,18 +182,17 @@ class test():
             href = link.get("href")
             if href:
                 if href.startswith("http"):
-                    try:
-                        link_response = requests.get(href)
-                        status_code = link_response.status_code
-                        # link_response.raise_for_status()
-                        if status_code == 200:
-                            self.echo(True, "Link "+href+" is working.")
-                        elif status_code == 403:
-                            self.echo(False, "403 Forbidden error for "+href+" "+str(link))
-                        else:
-                            self.echo(False, "Unexpected status code "+str(status_code)+" for "+href+" "+str(link))
-                    except requests.exceptions.HTTPError:
-                        self.echo(False, "Link "+href+" is broken. ")
+                    link_response, status_code, status = self.request_handler(href)
+                    self.process_status_code(href,status_code)
+
+                    if status is True:
+                        # Print the load time in seconds
+                        try:
+                            print("Load time for", href, ":", self.load_time[href], "seconds")
+                        except Exception as e:
+                            pass
+                    else:
+                        self.echo(False, link)
         
         print("Checking script links @ "+self.url)
         script_urls=[]
@@ -184,50 +201,48 @@ class test():
             if script_text:
                 pattern = re.compile(r'(?P<url>https?://[^\s<>"]+|www\.[^\s<>"]+)')
                 script_urls = re.findall(pattern, script_text)
-                # print(script_urls)
 
             if script_urls:
                 for href in script_urls:
-                    # print(href)
-                    try:
-                        link_response = requests.get(href)
+                    link_response, status_code, status = self.request_handler(href)
+                    self.process_status_code(href,status_code)
+                                        
+                    if status is True:
+                        # Print the load time in seconds
                         try:
-                            status_code = link_response.status_code
-                            # link_response.raise_for_status()
-                            if status_code == 200:
-                                self.echo(True, "Link "+href+" is working.")
-                            elif status_code == 403:
-                                self.echo(False, "403 Forbidden error for "+href)
-                            else:
-                                self.echo(False, "Unexpected status code "+str(status_code)+" for "+href)
-                        except requests.exceptions.HTTPError:
-                            self.echo(False, "Link "+href+" is broken. ")
-                    except:
-                        pass
-
+                            print("Load time for", href, ":", self.load_time[href], "seconds")
+                        except Exception as e:
+                            pass
+                    else:
+                        self.echo(False, link)
 
     def check_domain(self):
         # Get WHOIS information for the domain
         w = whois.query(self.url)
 
-        # Get the expiration date of the domain
+        # The expiration date of the domain
         expiration_date = w.expiration_date
+        
+        # The current nameservers
         nameServers = w.name_servers
 
-        for x in ["expire","expiration"]:
-            for y in nameServers:
-                print(y)
-                if x in y:
-                    self.echo(False, "The domain "+self.url+" has already expired!")
-                    return
-        
+        # Nameserver Tests
         for x in self.name_servers:
-            for y in nameServers:
-                print(y)
-                if x in y:
-                    self.echo(True, "The domain "+self.url+" is using nameserver "+y)
-                    return    
-            self.echo(False, "The domain "+self.url+" has an incorrect nameserver "+y)
+            if x in nameServers:
+                # print(x)
+                self.echo(True, "The domain "+self.url+" is using nameserver "+x)
+            else:    
+                self.echo(False, "The domain "+self.url+" has an incorrect nameserver "+x)
+
+        if nameServers:
+            self.echo(False, "Nameservers "+str(nameServers)+" do not match specification for "+self.url)
+        
+        # Domain Renewal
+        for x in ["expire","expiration"]:
+            if x in nameServers:
+                self.echo(False, "The domain "+self.url+" has already expired!")
+                return
+        
 
         # Calculate the number of days until the domain expires
         days_until_expiration = (expiration_date - datetime.datetime.now()).days
@@ -244,28 +259,26 @@ class test():
 
 if __name__ == "__main__":
 
-    urls = [["http://www.boejaker.com",["abbey.ns.cloudflare.com","brad.ns.cloudflare.com"]],["http://www.maxhodl.com",["ns1.dns-parking.com","ns2.dns-parking.com"]],["http://boejaker.github.io",[]]]
+    urls = [["http://www.boejaker.com",["abby.ns.cloudflare.com","brad.ns.cloudflare.com"],["jb.enquiries@proton.me"],["07761544030"]],\
+            ["http://www.maxhodl.com",["ns1.dns-parking.com","ns2.dns-parking.com"],["jb.enquiries@proton.me"],["07761544030"]],\
+            ["http://boejaker.github.io",['dns1.p05.nsone.net', 'dns2.p05.nsone.net', 'dns3.p05.nsone.net', 'ns-1622.awsdns-10.co.uk', 'ns-692.awsdns-22.net'],["jb.enquiries@proton.me"],["07761544030"]]]
 
     print(f"Testing {len(urls)} urls, {urls}")
     
-    for u, name_servers in urls:
-        # print(u,name_servers)
-        t=test(u, name_servers)
+    for u, name_servers, emails, phone_numbers in urls:
+        
+        t=test(u, name_servers, emails, phone_numbers) # TODO Create threads for each website here
 
         print(f"Analyzing website {u}")
 
         t.check_website()
-        t.read_status()
         t.check_domain()
         t.check_links()
         t.find_contacts()
 
-        if t.report and push:
-            t.send_report(t.report)
-        else:
-            t.send_report("Operational")
-
-        total=t.total(t.fail_count, t.pass_count)
-        print(f"pass {t.pass_count}/{total} failed{t.fail_count}/{total}")
-
+        t.send_report()
+        print(t.report)
+        print(f"pass {t.pass_count}/{t.total} failed{t.fail_count}/{t.total}")
+    
+    # TODO Join threads for each website here
 
