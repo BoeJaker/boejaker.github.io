@@ -64,7 +64,7 @@ footer {
 
 content page .table { 
   font-family: 'Catamaran', sans-serif;
-  font-size: 3vh;
+  font-size: 1.2em;
   -webkit-font-smoothing: antialiased;
   background-color: rgba(200, 200, 200, 0.1);
   z-index: 300;
