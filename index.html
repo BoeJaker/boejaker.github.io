@@ -555,140 +555,14 @@ Cleanup:
 <script src="scripts/Draw.js"></script>
 <script src="scripts/PalleteMenu.js"></script>
 <script src="scripts/Memory.js"></script>
-
-<!-- Fetch GitHub Repository List -->
+<script src="scripts/GitRepos.js"></script>
+<script src="scripts/IsUp.js"></script>
+<script src="scripts/NewArticles.js"></script>
+<script src="scripts/SnapScroll.js"></script>
 <script>
-	// GitHub username and API endpoint
-	const username = "boejaker";
-	const endpoint = `https://api.github.com/users/${username}/repos?per_page=100`;
-  
-    fetch(endpoint)
-      .then(response => response.json())
-      .then(data => {
-        const tableBody = document.querySelector("#repoTable tbody");
-        const reposWithSummary = data.filter(repo => {
-			console.log(repo.name)
-          return true;
-        });
-		reposWithSummary.forEach(repo => {
-        const summaryUrl = `https://raw.githubusercontent.com/${username}/${repo.name}/master/.summary`;
-        fetch(summaryUrl)
-          .then(response => {
-            if (response.status === 404) {
-              throw new Error("Summary file not found");
-            }
-            return response.text();
-          })
-          .then(summary => {
-            if (summary.trim()) { // Check if summary is not empty
-              const readmeUrl = `https://github.com/${username}/${repo.name}/blob/master/README.md`;
-              const row = tableBody.insertRow();
-              const nameCell = row.insertCell();
-              const summaryCell = row.insertCell();
-              nameCell.innerHTML = `<h3><a href="https://github.com/${username}/${repo.name}/">${repo.name}</a></h3>`;
-              summaryCell.innerHTML = summary;
-            }
-          })
-          .catch(error => console.error(error));
-        });
-      })
-      .catch(error => console.error(error));
-	  
-  </script>
-	<script>
-		function decodeHtml(html) {
-			var txt = document.createElement("textarea");
-			txt.innerHTML = html.replace(/&#(\d+);/g, function(match, dec) {
-				return String.fromCharCode(dec);
-			});
-			return txt.value;
-			}
-		// Replace YOUR_WORDPRESS_SITE_URL with the URL of your WordPress site
-		const urlA = 'https://boejaker.com/wp-json/wp/v2/posts?per_page=5';
-		const urlB = 'https://maxhodl.com/wp-json/wp/v2/posts?per_page=5';
-		fetch(urlA)
-			.then(response => response.json())
-			.then(posts => {
-				// Replace "recent-posts" with the ID or class of the element where you want to display the posts
-				const recentPostsContainer = document.getElementById("boejaker-recent-posts");
-
-				// Loop through the posts and create HTML elements to display them
-				posts.forEach(post => {
-				const postLink = document.createElement("a");
-				postLink.href = post.link;
-				postLink.textContent = decodeHtml(post.title.rendered);
-
-				const postImage = document.createElement("img");
-				postImage.src = post.featured_media.source_url;
-				postImage.alt = post.title.rendered;
-
-				const postSummary = document.createElement("p");
-				postSummary.textContent = decodeHtml(post.excerpt.rendered)
-					.replace(/<\/?[^>]+(>|$)/g, '')
-					.replace('[&hellip;]', '. . .');
-
-				const listItem = document.createElement("li");
-				// listItem.appendChild(postImage);
-				listItem.appendChild(postLink);
-				listItem.appendChild(postSummary);
-
-				recentPostsContainer.appendChild(listItem);
-				});
-			})
-		.catch(error => console.error(error));
-		fetch(urlB)
-			.then(response => response.json())
-			.then(posts => {
-				// Replace "recent-posts" with the ID or class of the element where you want to display the posts
-				const recentPostsContainer = document.getElementById("maxhodl-recent-posts");
-
-				// Loop through the posts and create HTML elements to display them
-				posts.forEach(post => {
-				const postLink = document.createElement("a");
-				postLink.href = post.link;
-				postLink.textContent = decodeHtml(post.title.rendered);
-
-				const postImage = document.createElement("img");
-				postImage.src = post.featured_media.source_url;
-				postImage.alt = post.title.rendered;
-
-				const postSummary = document.createElement("p");
-				postSummary.textContent = decodeHtml(post.excerpt.rendered)
-					.replace(/<\/?[^>]+(>|$)/g, '')
-					.replace('[&hellip;]', '. . .');
-
-				const listItem = document.createElement("li");
-				// listItem.appendChild(postImage);
-				listItem.appendChild(postLink);
-				listItem.appendChild(postSummary);
-
-				recentPostsContainer.appendChild(listItem);
-				});
-			})
-		.catch(error => console.error(error));
-	</script>
-	<script>
-		function is_wp_up(siteUrl, statusElementId) {
-			const postsEndpoint = '/wp-json/wp/v2/posts';
-			// Make a GET request to the WordPress REST API to retrieve the latest posts
-			fetch(`${siteUrl}${postsEndpoint}`)
-				.then(response => {
-					if (response.ok) {
-						// If the response is successful, update the status element to show a green tick
-						document.getElementById(statusElementId).innerHTML = `<span style="color:green;">&#10004; Online</span> `;
-					} else {
-						// If the response is not successful, update the status element to show a red cross
-						document.getElementById(statusElementId).innerHTML = `<span style="color:red;">&#10060; Offline</span>`;
-					}
-				})
-				.catch(error => {
-					// If there is an error, update the status element to show a red cross
-					document.getElementById(statusElementId).innerHTML = `<span style="color:red;">&#10060; Offline</span>`;
-				});
-		}
-		is_wp_up("https://maxhodl.com", "maxhodl-status");
-		is_wp_up("https://boejaker.com", "boejaker-status");
-	</script>
+	is_wp_up("https://maxhodl.com", "maxhodl-status");
+	is_wp_up("https://boejaker.com", "boejaker-status");
+</script>
 </body>
 
 </html>

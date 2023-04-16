@@ -4,10 +4,12 @@
   overflow: hidden;
   background: transparent;
   width: 88vw;
+  /* height:90%; */
   visibility: hidden;
   display: flex;
   flex-direction: column;
-  flex-grow:0.5;
+  flex-grow:1;
+  flex-shrink: 1;
 }
 
 
@@ -17,7 +19,8 @@
 .square .l4 {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  flex-grow: 0.5;
+  flex-shrink: 0.5;
   position: absolute;
   background: transparent;
   width: 0px;
@@ -90,5 +93,5 @@
 
 .grow {
   width: 100%;
-  /* flex-grow: 1; */
+  flex-grow: 1;
 }

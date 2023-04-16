@@ -48,11 +48,11 @@ content page subdiv {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  padding-left: 7%;
-  padding-top: 1%;
-  /* padding-bottom: 1%; */
-  padding-top: 2%;
-  top:17%;
+  padding-left: 6%;
+  /* padding-top: 0%; */
+  padding-bottom: 4vh;
+  /* padding-top: 1%; */
+  top:20%;
 }
 
 footer {
@@ -142,7 +142,7 @@ content h2 {
   text-transform: uppercase;
   font-weight: 500;
   letter-spacing: 0.4vw;
-  line-height: 3vh;
+  line-height:  1.5em;
   margin: 1vw 0 1vw;
 }
 content h3 {
@@ -214,8 +214,8 @@ content #contact {
 }
 
 #welcomeContent{
-  top: 18%;
-  padding-bottom: 2%;
+  top: 20%;
+  padding-bottom: 4vh;
 }
 #welcomeContent .square{
   top: 0!important;
