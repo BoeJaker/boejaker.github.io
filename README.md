@@ -6,34 +6,48 @@
 
 ## Problem Statement
 Employers and collaborators do not have an easy way to view or experience my work. Github is good for version control but lacks substance.  
-I post my work to multiple platforms, social media and blogs, this makes it hard to see all my content without lots of searching.
+
+I post my work to multiple platforms, social media and blogs, this makes it hard to see all my content without lots of searching.  
+
+Maintianing multiple websites over sveral platforms makes keeping track of broken links, key information, domain renewals  and other such issues is time consuming and prone to error or inconsistency.  
 
 ***
 </br>  
 
 ## Solution
 A single webpage that aggregates all of my content and posts automatically.   
-List and summarize my most notable repos automatically with javascript API calls to github
-Interactive sections that run deployed code.
-A section that contains my contact details and a dynamic CV element that updates as I update the google doc
+List and summarize my most notable repos automatically with javascript API calls to github.  
 
-With these features i will be able to keep posting to my other platforms as i was with all new content automatically displaying on the portfolio.
+Interactive sections that run deployed code.  
+
+A section that contains my contact details and a dynamic CV element that updates as I update the google doc.  
+
+Website CI/CD Script  
+A script that scans each website for broken links, missing images, broken interactive elements incorrect contact info, domain name renewal. It will also measure response times and pageload speeds. To keep me up to speed i will intergrate a notification API such as pushbullet.
+
+With these features i will be able to keep posting to my other platforms as i was with all new content automatically displaying on the portfolio. I wont have to keep checking if everything is up to date and working as the website scanner will notify me of any issues.
 
 ***
 </br>  
 
 ## Design Specification
 Must be easy to use on both PC and Mobile (responsive).  
-Must provide my contact details in several places - uses animation to draw the eye to at least one.  
-A distinct, clashing, color pallette.
 
-This should create an easy to use, memorable, experience.
+Must provide my contact details in several places - uses animation to draw the eye to at least one.  
+
+A distinct, clashing, color pallette.  
+
+A modular extensible design
+
+This should create an easy to use, memorable, experience that easy easy to upkeep and extend the features of.
 
 ***
 </br>  
 
 ## Implementation
-Minimal use of libraries, use my own code wherever feasible.
+Minimal use of libraries, use my own code wherever feasible.  
+
+Minimal HTML for quick upkeep.
 
 </br>  
 
@@ -44,12 +58,12 @@ Minimal use of libraries, use my own code wherever feasible.
 
 ## Testing & Deployment
 
-### javaScript Unit Test
+### JavaScript Unit Test
 Files / Folders:
 jest.config.js
 babel.config.js
 
-This website has javaScript unit test that have been designed for it.
+This website has JavaScript unit test that have been designed for it.
 To run the unit tests open a terminal in the base directory and type the following:  
 
     yarn install
@@ -63,7 +77,7 @@ These test check that the website renders correctly and the javaScript behaves a
 ### Test Server
 Included is a local python server. to run the server, from the text/Server directory execute either of the following in a terminal:
 
-    python test_server.py
+    python test/Sever/test_server.py
 
 or
 
@@ -75,7 +89,7 @@ This will allow you to connect to the website on a local network - this can be u
 
 </br>
 
-### Deployment Test
+### CI/CD Test
 Files / Folders:
 website_test.py
 dockerfile
