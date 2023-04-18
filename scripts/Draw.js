@@ -48,8 +48,8 @@ tl2.timeScale(4); //play faster
 tl3.timeScale(4); //play faster
 tl4.timeScale(4); //play faster
 
-$('.square').css('height', $('.table').outerHeight());
-$('page').css('min-height', parseInt($('.square').outerHeight())+parseInt($('.banner').outerHeight())+100);
+// $('.square').css('height', $('.table').outerHeight());
+// $('page').css('min-height', parseInt($('.square').outerHeight())+parseInt($('.banner').outerHeight())+100);
 
 
         $('.trans--growLeft').addClass('grow');
@@ -60,6 +60,6 @@ $( window ).resize(function() {$(".l1").css("height", $(".table").outerHeight())
 $( window ).resize(function() {$('.l2').css('width', $('.table').outerWidth());});
 $( window ).resize(function() {$('.l3').css('height', $('.table').outerHeight());});
 $( window ).resize(function() {$('.l4').css('width', $('.table').outerWidth());});
-$( window ).resize(function() {$('.square').css('height', $('.table').outerHeight());}); 
-$( window ).resize(function() {$('page').css('min-height', parseInt($('.square').outerHeight())+parseInt($('.banner').outerHeight())+100)}); 
+// $( window ).resize(function() {$('.square').css('height', $('.table').outerHeight());}); 
+// $( window ).resize(function() {$('page').css('min-height', parseInt($('.square').outerHeight())+parseInt($('.banner').outerHeight())+100)}); 
 
