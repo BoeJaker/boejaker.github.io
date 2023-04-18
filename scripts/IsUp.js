@@ -5,14 +5,14 @@ function is_wp_up(siteUrl, statusElementId) {
         .then(response => {
             if (response.ok) {
                 // If the response is successful, update the status element to show a green tick
-                document.getElementById(statusElementId).innerHTML = `<span style="color:green;">&#10004; Online</span> `;
+                document.getElementById(statusElementId).innerHTML = `<span style="color:#25633a;">&#10004; Online</span> `;
             } else {
                 // If the response is not successful, update the status element to show a red cross
-                document.getElementById(statusElementId).innerHTML = `<span style="color:red;">&#10060; Offline</span>`;
+                document.getElementById(statusElementId).innerHTML = `<span style="color::#88263b;">&#10060; Offline</span>`;
             }
         })
         .catch(error => {
             // If there is an error, update the status element to show a red cross
-            document.getElementById(statusElementId).innerHTML = `<span style="color:red;">&#10060; Offline</span>`;
+            document.getElementById(statusElementId).innerHTML = `<span style="color:#88263b;">&#10060; Offline</span>`;
         });
 }

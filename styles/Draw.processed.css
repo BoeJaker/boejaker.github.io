@@ -1,10 +1,12 @@
 .square {
   /* height:80%; */
-  position: relative;
+  position: absolute;
   overflow: hidden;
   background: transparent;
   width: 88vw;
-  /* height:90%; */
+  height: 100%!important;;
+  top:0;
+  left:1%;
   visibility: hidden;
   display: flex;
   flex-direction: column;
@@ -27,6 +29,7 @@
   height: 0px;
   /*give each border a background color of black in css so that you don't need to animate it*/
   background-color: rgba(240, 240, 240, 0.4);
+  z-index: 502;
 
 }
 
