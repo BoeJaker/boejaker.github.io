@@ -168,14 +168,21 @@ content page .table {
 content page .table th, td {
     display: block;
     word-break: break-word;
+  
   }
 content page .table th {
     visibility: hidden;
     height:0;
+    padding-left: 1vw;
   }
 content page .table td {
     text-align: left;
     padding-left: 20px;
+  }
+  #repoTable td{
+    /* text-align: left; */
+    padding-left: 10vw!important;
+    padding-right: 10vw!important;
   }
 }
 content page .table th, td {
@@ -186,7 +193,8 @@ content page .table th, td {
 
 #repoTable td{
   text-align: left;
-  padding-left: 1vw;
+  padding-left: 4vw;
+  font-size: 0.9em;
 }
 
 .span{
